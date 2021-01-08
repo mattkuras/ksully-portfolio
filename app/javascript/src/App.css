@@ -1,0 +1,94 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.title {
+  font-family: "Dancing Script", cursive;
+  color: lightblue;
+  font-weight: 200;
+  font-size: 8rem;
+  margin-bottom: 100px;
+}
+
+span {
+  font-size: 36px;
+  padding-left: 15px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url(kyles_background.jpg);
+}
+
+.link-item {
+  margin: 25px;
+  padding: 10px 30px;
+  font-weight: 100;
+  font-size: 5rem;
+  letter-spacing: 3px;
+  border-radius: 1px;
+  width: 350px;
+  text-align: center;
+  color: white;
+  background: linear-gradient(to left, salmon 50%, lightblue 50%) right;
+  background-size: 200%;
+  transition: 0.5s ease-out;
+  border: 3px solid salmon;
+}
+
+.link-item:hover {
+  border: 3px solid #fff;
+  cursor: pointer;
+  background-position: left;
+  color: #000;
+}
+
+@media only screen and (max-width: 1600px) {
+  .title {
+    font-size: 6rem;
+    margin-bottom: 60px;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .title {
+    font-size: 5rem;
+  }
+
+  .link-item {
+    width: 300px;
+    font-size: 4rem;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .title {
+    font-size: 4rem;
+  }
+
+  .link-item {
+    width: 275px;
+    font-size: 3.5rem;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .title {
+    font-size: 3rem;
+    padding: 3px;
+  }
+
+  .link-item {
+    width: 225px;
+    font-size: 3rem;
+  }
+}

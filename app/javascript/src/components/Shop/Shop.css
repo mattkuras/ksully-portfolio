@@ -1,6 +1,17 @@
 .shop-page-container {
-  width: 80vw;
+  background-color: #121212;
+}
+
+.shop-page-content {
+  width: 90vw;
   margin: 0 auto;
+  padding-top: 5rem;
+}
+
+nav {
+  padding-bottom: 2rem;
+  color: lightblue;
+  letter-spacing: 1px;
 }
 
 .product-filter {
@@ -25,23 +36,57 @@
   align-items: center;
   border-radius: 5px;
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  background-color: #242526;
+  color: #e4e6eb;
+  font-weight: 100;
+  padding: 2rem;
+}
+
+.product-title {
+  letter-spacing: 2px;
+}
+
+.product-price {
+  letter-spacing: 1px;
+}
+
+.product-image {
+  margin: 0 auto;
 }
 
 .product-image img {
-  max-width: 100%;
+  margin-left: 5%;
+  max-width: 90%;
 }
 
 .product-info {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#checkout-button {
+  cursor: pointer;
+  outline: none;
+  border: 1px solid #fff;
+  border-radius: 2px;
+  padding: 10px 40px;
+  font-weight: 100;
+  color: #fff;
+  background: linear-gradient(to left, #242526 50%, #fff 50%) right;
+  background-size: 200%;
+  margin-top: 1rem;
+  transition: 0.5s ease-out;
+}
+
+#checkout-button:hover {
+  background-position: left;
+  color: #121212;
 }
 
 h2 {
   padding-top: 10px;
   padding-bottom: 5px;
-}
-
-h4 {
-  color: #666;
 }
 
 @media only screen and (max-width: 1650px) {

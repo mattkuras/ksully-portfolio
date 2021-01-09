@@ -1,34 +1,38 @@
 class ChargesController < ApplicationController
-    def new
-    end
+  skip_before_action :verify_authenticity_token
 
+  def new
+  end
 
-    def create
-        session = Stripe::Checkout::Session.create({
-            payment_method_types: ['card'],
-            line_items: [{
-              price_data: {
-                currency: 'usd',
-                product_data: {
-                  name: params[:name],
-                },
-                unit_amount: params[:unit_amount],
-              },
-              quantity: params[:quantity],
-            }],
-            mode: 'payment',
-          })
-        
-          render json: { id: session.id }.to_json
-    end
+  def create
+    session = Stripe::Checkout::Session.create({
+      payment_method_types: ["card"],
+      line_items: [{
+        price_data: {
+          currency: "usd",
+          product_data: {
+            name: params[:name],
+          },
+          unit_amount: params[:unit_amount],
+        },
+        quantity: params[:quantity],
+      }],
+      mode: "payment",
 
-    private
-    def charge_params
-        params.require(:charge).permit(
-            :name,
-            :unit_amount,
-            :quantity,
-        )
-    end
+      success_url: "https://example.com/success",
+      cancel_url: "https://example.com/cancel",
+    })
 
+    render json: { id: session.id }.to_json
+  end
+
+  private
+
+  def charge_params
+    params.require(:charge).permit(
+      :name,
+      :unit_amount,
+      :quantity,
+    )
+  end
 end

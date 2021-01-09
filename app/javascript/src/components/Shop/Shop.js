@@ -8,12 +8,25 @@ const stripePromise = loadStripe('pk_test_51I73MsKw5OX78tFumdDo0CLhysi8WPejrlcjA
 function Shop() {
 
   const handleClick = async (e) => {
+// dummy data for request
+    const charge = {
+      name: 'kyles picture',
+      unit_amount: 1000,
+      quantity: 1
+    }
+
     //Get Instance of Stripe
     const stripe = await stripePromise;
 
     //Calling backend to create Checkout Session
-    const response = await fetch('/create-checkout-session', {method: 'POST'});
-  
+    const response = await fetch('/charges/create', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(charge)
+    });
+
     const session = await response.json();
 
     const result = await stripe.redirectToCheckout({

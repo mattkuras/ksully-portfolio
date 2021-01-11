@@ -1,0 +1,20 @@
+.product-form {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  border: 2px solid #000;
+  border-radius: 5px;
+  width: 60vh;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.product-info {
+  margin: 2rem 1rem;
+  width: 60%;
+}
+
+h1 {
+  margin: 30px auto;
+  text-align: center;
+}

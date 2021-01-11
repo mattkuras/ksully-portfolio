@@ -11,6 +11,7 @@ class ProductsController < ApplicationController
         if product.save
             render json: product 
         else
+            byebug
             render json: "there was an error creating your product"
         end
     end

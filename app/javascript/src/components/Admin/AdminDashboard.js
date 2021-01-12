@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import "./Admin.css"
-
+import { DirectUpload } from 'activestorage';
 
 const Admin = () => {
     const [productImage, setProductImage] = useState('');
@@ -12,36 +12,48 @@ const Admin = () => {
         e.preventDefault()
         createProduct()
     }
-
+// creates product then calls uploadfile
    const createProduct = async () => {
-
     let product = {
         name: productName,
-        image: productImage,
         price: productPrice,
         category: productCategory
       }
-        
-        const response = await fetch('/products', {
+        fetch('/products', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify(product) // body data type must match "Content-Type" header
-        }).then(console.log(response));
-        return response.json(); // parses JSON response into native JavaScript objects
+        })
+        .then(resp => resp.json())
+        .then(data => uploadFile(productImage, data))
+      }
+// uploads image file from form, then sends patch request to attach file to product
+      const uploadFile = (file, product) => {
+        const upload = new DirectUpload(file, '/rails/active_storage/direct_uploads')
+        upload.create((error, blob) => {
+          if (error){
+            console.log(error)
+          } else {
+            fetch(`/products/${product.id}`, {
+              method: 'PATCH',
+              headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+              }
+            })
+            .then(resp => console.log(resp))
+          }
+        })
       }
       
-    //   postData('https://example.com/answer', { answer: 42 })
-    //     .then(data => {
-    //       console.log(data); // JSON data parsed by `data.json()` call
-    //     });
 
     return (
         <div className="admin-page-container">
             <h1>Admin Dashboard</h1>
             <form onSubmit={handleFormSubmit} className="product-form">
-                <input value={productImage} onChange={e => setProductImage(e.target.value) } className="product-info" type="file" />
+                <input onChange={e => setProductImage(e.target.files[0]) } className="product-info" type="file" />
                 <input value={productName} onChange={(e) => setProductName(e.target.value) }  className="product-info" type="text" placeholder="Enter Product Name Here" />
                 <input value={productPrice} onChange={e => setProductPrice(e.target.value) }  className="product-info" type="text" placeholder="Enter Product Price Here" />
                 <select value={productCategory} onChange={e => setProductCategory(e.target.value) }  className="product-info">

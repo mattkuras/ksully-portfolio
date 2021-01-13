@@ -29,7 +29,11 @@ Rails.application.configure do
   end
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
-  config.active_storage.service = :local
+  config.active_storage.service = :amazon
+  config.action_mailer.default_url_options = { host: 'localhost:3000' } # for absolute urls in email
+  config.action_mailer.asset_host = "http://localhost:3000" # for image URLs in HTML email
+ # Allow generating absolute urls with routing url helpers.
+ Rails.application.routes.default_url_options[:host] = 'localhost:3000'
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false

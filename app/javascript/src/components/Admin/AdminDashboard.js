@@ -17,7 +17,8 @@ const Admin = () => {
     let product = {
         name: productName,
         price: productPrice,
-        category: productCategory
+        category: productCategory,
+        image: productImage
       }
         fetch('/products', {
           method: 'POST',
@@ -36,16 +37,19 @@ const Admin = () => {
           if (error){
             console.log(error)
           } else {
-            debugger
-            fetch(`/products/${product.id}`, {
-              method: 'PATCH',
+            let signed_id = blob.signed_id
+            let image = {image: signed_id}
+            let url = `/products/${product.id}`
+            fetch(url, {
               headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
               },
-              body: JSON.stringify(blob)
+              method: 'PATCH',
+              body: JSON.stringify(image)
             })
-            .then(resp => console.log(resp))
+            .then(resp => resp.json())
+            .then(result => console.log(result))
           }
         })
       }

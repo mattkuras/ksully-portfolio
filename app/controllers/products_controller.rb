@@ -3,17 +3,17 @@ class ProductsController < ApplicationController
 
     def index
         products = Product.all
-        render json: products
+        render json: products.to_json(methods: [:image_url])
     end
     def show
         product = Product.find(params[:id])
-        render json: product.image
+        image_url = rails_blob_path(product.image)
+        render json: {product: product, image_url: image_url}
     end
 
     def create
         product = Product.new(product_params)
         # product.image.attach(io: File.open(params[:image]), filename: params[:image])
-
         if product.save
             render json: product 
         else
@@ -22,11 +22,10 @@ class ProductsController < ApplicationController
     end
     def update
         product = Product.find(params[:id])
-        blob = ActiveStorage::Blob.last
-        product.image.attach(blob)
+        product.image.attach(params[:image])
         # product.update(image: params[:image])
-        product_url = rails_blob_path(product.image)
-        render json: product_url
+        image_url = rails_blob_path(product.image)
+        render json: { product: product, image_url: image_url}
     end
 
     private 

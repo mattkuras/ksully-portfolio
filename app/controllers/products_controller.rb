@@ -5,6 +5,10 @@ class ProductsController < ApplicationController
         products = Product.all
         render json: products
     end
+    def show
+        product = Product.find(params[:id])
+        render json: product.image
+    end
 
     def create
         product = Product.new(product_params)
@@ -22,7 +26,7 @@ class ProductsController < ApplicationController
         product.image.attach(blob)
         # product.update(image: params[:image])
         product_url = rails_blob_path(product.image)
-        render json: { product: product, product_url: product_url}
+        render json: product_url
     end
 
     private 

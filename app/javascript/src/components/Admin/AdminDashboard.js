@@ -36,12 +36,14 @@ const Admin = () => {
           if (error){
             console.log(error)
           } else {
+            debugger
             fetch(`/products/${product.id}`, {
               method: 'PATCH',
               headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
-              }
+              },
+              body: JSON.stringify(blob)
             })
             .then(resp => console.log(resp))
           }

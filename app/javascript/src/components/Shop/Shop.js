@@ -1,11 +1,35 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { loadStripe } from "@stripe/stripe-js"
 import "./Shop.css"
 
 const stripePromise = loadStripe('pk_test_51I73MsKw5OX78tFumdDo0CLhysi8WPejrlcjAjqIvYRo1dAOAr0kFGiFXVUXph8T2RXjv6ikYWCZyKKLDt7Fhj6t00DTnSFBMD')
 
 
-function Shop() {
+const Shop = () => {
+    const [productList, setProductList] = useState([])
+
+  useEffect(() => {
+    const response = fetch('http://localhost:3000/products')
+    .then(response => response.json())
+    .then(data => setProductList(data));
+  }, [])
+
+  const Gallery = () => {
+    return <section className="products">
+       {productList.map((product) => (
+         <div key={product.name} className="product-card">
+           <div className="product-image">
+              <img src="https://i0.wp.com/theluxurytravelexpert.com/wp-content/uploads/2019/01/zakynthos-JPEG.jpg?fit=1920%2C1080&ssl=1" />
+          </div>
+          <div className="product-info">
+               <h2 className="product-title">{product.name}</h2>
+               <h4 className="product-price">${product.price/100}.00</h4>
+               <button onClick={handleClick} id="checkout-button">Buy Now</button>
+          </div>
+        </div>
+       ))}
+        </section>
+     }
 
   const handleClick = async (e) => {
 // dummy data for request
@@ -52,99 +76,7 @@ function Shop() {
         </select>
       </div>
   </nav>
-
-  <section className="products">
-
-  <div className="product-card">
-    <div className="product-image">
-      <img src="https://i0.wp.com/theluxurytravelexpert.com/wp-content/uploads/2019/01/zakynthos-JPEG.jpg?fit=1920%2C1080&ssl=1" />
-    </div>
-    <div className="product-info">
-      <h2 className="product-title">Montego Bay</h2>
-      <h4 className="product-price">$99.99</h4>
-      <button onClick={handleClick} id="checkout-button">Buy Now</button>
-    </div>
-  </div>
-
-  <div className="product-card">
-    <div className="product-image">
-      <img src="https://i0.wp.com/theluxurytravelexpert.com/wp-content/uploads/2019/01/zakynthos-JPEG.jpg?fit=1920%2C1080&ssl=1" />
-    </div>
-    <div className="product-info">
-      <h2 className="product-title">Montego Bay</h2>
-      <h4 className="product-price">$99.99</h4>
-      <button onClick={handleClick} id="checkout-button">Buy Now</button>
-    </div>
-  </div>
-
-  <div className="product-card">
-    <div className="product-image">
-      <img src="https://i0.wp.com/theluxurytravelexpert.com/wp-content/uploads/2019/01/zakynthos-JPEG.jpg?fit=1920%2C1080&ssl=1" />
-    </div>
-    <div className="product-info">
-      <h2 className="product-title">Montego Bay</h2>
-      <h4 className="product-price">$99.99</h4>
-      <button onClick={handleClick} id="checkout-button">Buy Now</button>
-    </div>
-  </div>
-
-  <div className="product-card">
-    <div className="product-image">
-      <img src="https://i0.wp.com/theluxurytravelexpert.com/wp-content/uploads/2019/01/zakynthos-JPEG.jpg?fit=1920%2C1080&ssl=1" />
-    </div>
-    <div className="product-info">
-      <h2 className="product-title">Montego Bay</h2>
-      <h4 className="product-price">$99.99</h4>
-      <button onClick={handleClick} id="checkout-button">Buy Now</button>
-    </div>
-  </div>
-
-  <div className="product-card">
-    <div className="product-image">
-      <img src="https://i0.wp.com/theluxurytravelexpert.com/wp-content/uploads/2019/01/zakynthos-JPEG.jpg?fit=1920%2C1080&ssl=1" />
-    </div>
-    <div className="product-info">
-      <h2 className="product-title">Montego Bay</h2>
-      <h4 className="product-price">$99.99</h4>
-      <button onClick={handleClick} id="checkout-button">Buy Now</button>
-    </div>
-  </div>
-
-  <div className="product-card">
-    <div className="product-image">
-      <img src="https://i0.wp.com/theluxurytravelexpert.com/wp-content/uploads/2019/01/zakynthos-JPEG.jpg?fit=1920%2C1080&ssl=1" />
-    </div>
-    <div className="product-info">
-      <h2 className="product-title">Montego Bay</h2>
-      <h4 className="product-price">$99.99</h4>
-      <button onClick={handleClick} id="checkout-button">Buy Now</button>
-    </div>
-  </div>
-
-  <div className="product-card">
-    <div className="product-image">
-      <img src="https://i0.wp.com/theluxurytravelexpert.com/wp-content/uploads/2019/01/zakynthos-JPEG.jpg?fit=1920%2C1080&ssl=1" />
-    </div>
-    <div className="product-info">
-      <h2 className="product-title">Montego Bay</h2>
-      <h4 className="product-price">$99.99</h4>
-      <button onClick={handleClick} id="checkout-button">Buy Now</button>
-    </div>
-  </div>
-
-  <div className="product-card">
-    <div className="product-image">
-      <img src="https://i0.wp.com/theluxurytravelexpert.com/wp-content/uploads/2019/01/zakynthos-JPEG.jpg?fit=1920%2C1080&ssl=1" />
-    </div>
-    <div className="product-info">
-      <h2 className="product-title">Montego Bay</h2>
-      <h4 className="product-price">$99.99</h4>
-      <button onClick={handleClick} id="checkout-button">Buy Now</button>
-    </div>
-  </div>
-
-  
-</section>
+    <Gallery />
   </div>
   </div>
   );

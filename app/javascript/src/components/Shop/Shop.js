@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react"
 import { loadStripe } from "@stripe/stripe-js"
 import "./Shop.css"
-
 const stripePromise = loadStripe('pk_test_51I73MsKw5OX78tFumdDo0CLhysi8WPejrlcjAjqIvYRo1dAOAr0kFGiFXVUXph8T2RXjv6ikYWCZyKKLDt7Fhj6t00DTnSFBMD')
 
 
 const Shop = () => {
     const [productList, setProductList] = useState([])
+    const [showProduct, setShowProduct] = useState()
 
   useEffect(() => {
     const response = fetch('http://localhost:3000/products')
@@ -14,17 +14,31 @@ const Shop = () => {
     .then(data => setProductList(data));
   }, [])
 
+  const initializeShowProduct = async (e) => {
+      const response = await fetch(`/products/${e.target.value}`)
+      .then(response => response.json())
+      .then(data => console.log(data))
+      setShowProduct(response.data)
+      enlargeImage()
+  }
+
+  const enlargeImage = () => {
+    console.log(showProduct)
+  }
+
   const Gallery = () => {
+    console.log(productList)
     return <section className="products">
        {productList.map((product, index) => (
          <div key={product.name} className="product-card">
            <div className="product-image">
-              <img src={product.image_url} />
+              <img src="https://i0.wp.com/theluxurytravelexpert.com/wp-content/uploads/2019/01/zakynthos-JPEG.jpg?fit=1920%2C1080&ssl=1" />
           </div>
           <div className="product-info">
                <h2 className="product-title">{product.name}</h2>
                <h4 className="product-price">${product.price/100}.00</h4>
-               <button value={index} onClick={handleClick} id="checkout-button">Buy Now</button>
+               <button value={index} onClick={handleClick} className="checkout-button">Buy Now</button>
+               <button value={product.id} onClick={initializeShowProduct} className="button enlarge-btn">Enlarge Image</button>
           </div>
         </div>
        ))}

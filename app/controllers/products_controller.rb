@@ -16,6 +16,7 @@ class ProductsController < ApplicationController
             render json: "there was an error creating your product"
         end
     end
+    
     def update
         product = Product.find(params[:id])
         blob = ActiveStorage::Blob.last

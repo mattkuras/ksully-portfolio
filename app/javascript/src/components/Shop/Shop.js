@@ -16,15 +16,15 @@ const Shop = () => {
 
   const Gallery = () => {
     return <section className="products">
-       {productList.map((product) => (
+       {productList.map((product, index) => (
          <div key={product.name} className="product-card">
            <div className="product-image">
-              <img src="https://i0.wp.com/theluxurytravelexpert.com/wp-content/uploads/2019/01/zakynthos-JPEG.jpg?fit=1920%2C1080&ssl=1" />
+              <img src={product.image_url} />
           </div>
           <div className="product-info">
                <h2 className="product-title">{product.name}</h2>
                <h4 className="product-price">${product.price/100}.00</h4>
-               <button onClick={handleClick} id="checkout-button">Buy Now</button>
+               <button value={index} onClick={handleClick} id="checkout-button">Buy Now</button>
           </div>
         </div>
        ))}
@@ -32,10 +32,12 @@ const Shop = () => {
      }
 
   const handleClick = async (e) => {
-// dummy data for request
+
+    const index = e.target.value
+
     const charge = {
-      name: 'kyles picture',
-      unit_amount: 1000,
+      name: productList[index].name,
+      unit_amount: productList[index].price,
       quantity: 1
     }
 

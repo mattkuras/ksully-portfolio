@@ -65,7 +65,13 @@ nav {
   align-items: center;
 }
 
-#checkout-button {
+.button-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.checkout-button {
   cursor: pointer;
   outline: none;
   border: 1px solid #fff;
@@ -79,7 +85,7 @@ nav {
   transition: 0.5s ease-out;
 }
 
-#checkout-button:hover {
+.checkout-button:hover {
   background-position: left;
   color: #121212;
 }

@@ -1,12 +1,39 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
+import {Link} from "react-router-dom"
 import "./Admin.css"
 import { DirectUpload } from 'activestorage';
 
 const Admin = () => {
+    const [productList, setProductList] = useState([]);
     const [productImage, setProductImage] = useState('');
     const [productName, setProductName] = useState('');
     const [productPrice, setProductPrice] = useState(0);
     const [productCategory, setProductCategory] = useState('');
+
+    useEffect(() => {
+      const response = fetch('http://localhost:3000/products')
+      .then(response => response.json())
+      .then(data => setProductList(data));
+    }, [])
+
+   const Gallery = () => {
+     console.log(productList)
+    return<div className="product-container">
+       {productList.map((product) => (
+         <div key={product.name} className="product">
+           <img src={product.image_url} alt="Photo"/>
+           <h1>{product.name}</h1>
+           <h3>Price: ${product.price/100}</h3>
+           <h3>Category: {product.category}</h3>
+           <div className="btn-container"> 
+              <button className="btn edit-btn">Edit</button>
+              <button className="btn delete-btn">Delete</button>
+           </div>
+           </div>
+       ))}
+        </div>
+     }
+
 
     const handleFormSubmit = (e) => {
         e.preventDefault()
@@ -16,9 +43,8 @@ const Admin = () => {
    const createProduct = async () => {
     let product = {
         name: productName,
-        price: productPrice,
-        category: productCategory,
-        image: productImage
+        price: productPrice * 100,
+        category: productCategory
       }
         fetch('/products', {
           method: 'POST',
@@ -34,21 +60,22 @@ const Admin = () => {
       const uploadFile = (file, product) => {
         const upload = new DirectUpload(file, '/rails/active_storage/direct_uploads')
         upload.create((error, blob) => {
+          console.log("BLOB CREATED:", blob)
           if (error){
             console.log(error)
           } else {
             let signed_id = blob.signed_id
             let image = {image: signed_id}
-            let url = `/products/${product.id}`
-            fetch(url, {
+            console.log("ABOUT TO PATCH")
+            fetch(`/products/${product.id}`, {
+              method: 'PATCH',
               headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
               },
-              method: 'PATCH',
               body: JSON.stringify(image)
             })
-            .then(resp => resp.json())
+            .then(resp => console.log(resp))
             .then(result => console.log(result))
           }
         })
@@ -57,8 +84,12 @@ const Admin = () => {
 
     return (
         <div className="admin-page-container">
-            <h1>Admin Dashboard</h1>
+            <div className="header">
+              <h2 className="header-item">Admin Dashboard</h2>
+              <Link className="link-to-shop header-item" to="/shop"><h1>Go To Shop</h1></Link>
+            </div>
             <form onSubmit={handleFormSubmit} className="product-form">
+              <h1>Enter New Product</h1>
                 <input onChange={e => setProductImage(e.target.files[0]) } className="product-info" type="file" />
                 <input value={productName} onChange={(e) => setProductName(e.target.value) }  className="product-info" type="text" placeholder="Enter Product Name Here" />
                 <input value={productPrice} onChange={e => setProductPrice(e.target.value) }  className="product-info" type="text" placeholder="Enter Product Price Here" />
@@ -72,6 +103,9 @@ const Admin = () => {
                 </select>
                 <input type="submit" />
             </form>
+           
+              <Gallery />
+           
         </div>
     )
 }

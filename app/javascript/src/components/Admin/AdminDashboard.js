@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import "./Admin.css"
 import { DirectUpload } from 'activestorage';
 
@@ -7,6 +7,8 @@ const Admin = () => {
     const [productName, setProductName] = useState('');
     const [productPrice, setProductPrice] = useState(0);
     const [productCategory, setProductCategory] = useState('');
+
+    const [newProduct, setNewProduct] = useState({})
 
     const handleFormSubmit = (e) => {
         e.preventDefault()
@@ -49,12 +51,11 @@ const Admin = () => {
               body: JSON.stringify(image)
             })
             .then(resp => resp.json())
-            .then(result => console.log(result))
+            .then(result => setNewProduct(result))
           }
         })
       }
-      
-
+     
     return (
         <div className="admin-page-container">
             <h1>Admin Dashboard</h1>

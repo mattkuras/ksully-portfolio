@@ -7,7 +7,7 @@ class Product < ApplicationRecord
 
     def image_url
         if self.image.attached? 
-            image_url = Rails.application.routes.url_helpers.rails_blob_path(self.image) 
+            image_url = "https://kyle-sullivan.s3.amazonaws.com/#{self.image.key}"
         end
     end
     

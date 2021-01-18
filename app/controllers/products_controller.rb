@@ -7,8 +7,8 @@ class ProductsController < ApplicationController
     end
     def show
         product = Product.find(params[:id])
-        image_url = rails_blob_path(product.image)
-        render json: {product: product, image_url: image_url}
+        render json: product.to_json(methods: [:image_url])
+
     end
 
     def create

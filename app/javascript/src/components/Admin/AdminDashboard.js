@@ -8,8 +8,6 @@ const Admin = () => {
     const [productPrice, setProductPrice] = useState(0);
     const [productCategory, setProductCategory] = useState('');
 
-    const [newProduct, setNewProduct] = useState({})
-
     const handleFormSubmit = (e) => {
         e.preventDefault()
         createProduct()
@@ -41,7 +39,7 @@ const Admin = () => {
           } else {
             let signed_id = blob.signed_id
             let image = {image: signed_id}
-            let url = `/products/${product.id}`
+            let url = `/products/attachimage/${product.id}`
             fetch(url, {
               headers: {
                 'Content-Type': 'application/json',
@@ -51,7 +49,7 @@ const Admin = () => {
               body: JSON.stringify(image)
             })
             .then(resp => resp.json())
-            .then(result => setNewProduct(result))
+            .then(result => console.log(result))
           }
         })
       }

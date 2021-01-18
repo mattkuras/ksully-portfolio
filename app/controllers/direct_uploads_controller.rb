@@ -15,4 +15,6 @@ class DirectUploadsController < ActiveStorage::DirectUploadsController
         })
     end
 
+    
+
 end

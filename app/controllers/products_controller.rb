@@ -5,6 +5,7 @@ class ProductsController < ApplicationController
         products = Product.all
         render json: products.to_json(methods: [:image_url])
     end
+
     def show
         product = Product.find(params[:id])
         render json: product.to_json(methods: [:image_url])
@@ -20,12 +21,27 @@ class ProductsController < ApplicationController
             render json: "there was an error creating your product"
         end
     end
-    def update
+
+    def destroy
+        product = Product.find(params[:id])
+        product.destroy 
+        render json: 'product has been deleted from dashboard'
+    end
+
+    def update 
+        product = Product.find(params[:id])
+        product.update(product_params)
+        if product.save?
+            render json: 200
+        else 
+            render json: 'there was an error saving poduct. maybe try deleting it and recreating'
+        end
+    end
+
+    def attach
         product = Product.find(params[:id])
         product.image.attach(params[:image])
-        # product.update(image: params[:image])
-        image_url = rails_blob_path(product.image)
-        render json: { product: product, image_url: image_url}
+        render json: product.to_json(methods: [:image_url])
     end
 
     private 
@@ -33,8 +49,7 @@ class ProductsController < ApplicationController
         params.require(:product).permit(
             :name,
             :price,
-            :category,
-            :image
+            :category
         )
     end
 

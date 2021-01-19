@@ -1,5 +1,5 @@
 .shop-page-container {
-  background-color: #121212;
+  background-color: #fff;
 }
 
 .shop-page-content {
@@ -36,7 +36,7 @@ nav {
   align-items: center;
   border-radius: 5px;
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
-  background-color: #242526;
+  background-color: #3d55db;
   color: #e4e6eb;
   font-weight: 100;
   padding: 2rem;
@@ -57,6 +57,7 @@ nav {
 .product-image img {
   margin-left: 5%;
   max-width: 90%;
+  height: 100%;
 }
 
 .product-info {

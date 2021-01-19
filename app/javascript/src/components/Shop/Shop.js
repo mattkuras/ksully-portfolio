@@ -36,7 +36,8 @@ const Shop = () => {
        {productList.map((product, index) => (
          <div key={product.name} className="product-card">
            <div className="product-image">
-              <img src={product.image_url} />
+              {/* <img src={product.image_url} /> */}
+              <img src="https://i.pinimg.com/originals/81/c3/3a/81c33af00010a4b7a05b3f35cb9943b9.jpg" />
           </div>
           <div className="product-info">
                <h2 className="product-title">{product.name}</h2>

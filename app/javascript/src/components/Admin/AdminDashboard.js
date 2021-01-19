@@ -3,15 +3,49 @@ import "./Admin.css"
 import { DirectUpload } from 'activestorage';
 
 const Admin = () => {
+  const [productList, setProductList] = useState([]);
     const [productImage, setProductImage] = useState('');
     const [productName, setProductName] = useState('');
     const [productPrice, setProductPrice] = useState(0);
     const [productCategory, setProductCategory] = useState('');
 
+    useEffect(() => {
+      const response = fetch('http://localhost:3000/products')
+      .then(response => response.json())
+      .then(data => setProductList(data));
+    }, [])
+
+    const handleDelete = async (e) => {
+      let id = e.target.value
+
+      await fetch(`/products/${id}`, { method: 'DELETE' })
+        .then(() => console.log('Delete successful'))
+        .then(window.location.reload(false))
+    }
+
     const handleFormSubmit = (e) => {
         e.preventDefault()
         createProduct()
     }
+
+    const Gallery = () => {
+      console.log(productList)
+     return<div className="product-container">
+        {productList.map((product) => (
+          <div key={product.name} className="product">
+            <img src={product.image_url} alt="Photo"/>
+            <h1>{product.name}</h1>
+            <h3>Price: ${product.price/100}</h3>
+            <h3>Category: {product.category}</h3>
+            <div className="btn-container"> 
+               <button className="btn edit-btn">Edit</button>
+               <button value={product.id} onClick={handleDelete} className="btn delete-btn">Delete</button>
+            </div>
+            </div>
+        ))}
+         </div>
+      }
+
 // creates product then calls uploadfile
    const createProduct = async () => {
     let product = {
@@ -50,6 +84,7 @@ const Admin = () => {
             })
             .then(resp => resp.json())
             .then(result => console.log(result))
+            .then(window.location.reload(false))
           }
         })
       }
@@ -71,6 +106,7 @@ const Admin = () => {
                 </select>
                 <input type="submit" />
             </form>
+            <Gallery />
         </div>
     )
 }

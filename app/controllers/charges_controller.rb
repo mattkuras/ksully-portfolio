@@ -6,6 +6,9 @@ class ChargesController < ApplicationController
 
   def create
     session = Stripe::Checkout::Session.create({
+      shipping_address_collection: {
+        allowed_countries: ['US', 'CA']
+      },
       payment_method_types: ["card"],
       line_items: [{
         price_data: {

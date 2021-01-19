@@ -12,6 +12,10 @@ Rails.application.routes.draw do
 
   post '/rails/active_storage/direct_uploads', to: 'direct_uploads#create'
 
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
+  get '/logged_in', to: 'sessions#is_logged_in?'
+
   get '*path', to: 'home#index', via: :all
 
 end

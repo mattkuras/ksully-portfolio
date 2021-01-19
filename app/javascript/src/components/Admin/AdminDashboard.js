@@ -29,7 +29,7 @@ const Admin = () => {
     }
 
     const Gallery = () => {
-      console.log(productList)
+      // console.log(productList)
      return<div className="product-container">
         {productList.map((product) => (
           <div key={product.name} className="product">

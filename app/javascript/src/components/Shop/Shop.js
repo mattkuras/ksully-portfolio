@@ -33,7 +33,7 @@ function Shop() {
        ))}
         </section>
      }
-
+ 
   const handleClick = async (e) => {
 // dummy data for request
   const index = e.target.value

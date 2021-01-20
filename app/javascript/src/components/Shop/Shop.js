@@ -1,4 +1,8 @@
 import React, { useState, useEffect } from "react"
+import {Link} from "react-router-dom"
+import {FaInstagram} from "react-icons/fa"
+import {FaYoutube} from "react-icons/fa"
+import {SiVsco} from "react-icons/si"
 import { loadStripe } from "@stripe/stripe-js"
 import "./Shop.css"
 
@@ -25,7 +29,7 @@ function Shop() {
           <div className="product-info">
                <h2 className="product-title">{product.name}</h2>
                <h4 className="product-price">${product.price/100}.00</h4>
-               <button value={index} onClick={handleClick} className="checkout-button">Buy Now</button>
+               <button value={index} onClick={handleClick} id="checkout-button">Buy Now</button>
 
           </div>
         </div>
@@ -72,21 +76,31 @@ function Shop() {
   return (
     <div className="shop-page-container">
     <div className="shop-page-content">
-    <nav className="product-filter">
-    <h1>Kyle Sullivan Visual</h1>
-      <div className="collection-sort">
+    {/* <nav className="product-filter"> */}
+    <h1 className="shop-header">Kyle Sullivan Visual</h1>
+      {/* <div className="collection-sort">
         <label>Categories:</label>
         <select>
           <option value="/">All Photos</option>
         </select>
-      </div>
-  </nav>
+      </div> */}
+  {/* </nav> */}
 
   <section className="products">
-  <Gallery />
-  
-</section>
+      <Gallery />
+  </section>
   </div>
+  <footer>
+      <div className="social-icons">
+      <FaInstagram className="icon" alt="Instagram" />
+      <FaYoutube className="icon" alt="Youtube" />
+      <SiVsco className="icon" alt="VSCO" />
+      </div>
+      <div className="footer-links">
+      <Link className="footer-link" to="/"><h3>FAQs</h3></Link>
+      <h3 className="footer-link">Contact:<br/>kylesullivanvisual@gmail.com</h3>
+      </div>
+  </footer>
   </div>
   );
 }

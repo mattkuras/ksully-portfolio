@@ -6,6 +6,11 @@
   padding-top: 1rem;
 }
 
+a:visited {
+  text-decoration: none;
+  color: #fff;
+}
+
 nav {
   padding-bottom: 2rem;
   color: lightblue;
@@ -41,7 +46,7 @@ nav {
   flex-direction: column;
   align-items: center;
   padding: 2rem;
-  border: 1px solid #333;
+  border: 1px solid #ccc;
   border-radius: 25px;
   margin: 0.5rem;
   box-shadow: -11px 11px 1px rgba(0, 0, 0, 0.3);

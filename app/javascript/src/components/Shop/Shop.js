@@ -18,6 +18,13 @@ function Shop() {
     .then(data => setProductList(data));
   }, [])
 
+  // const showProduct = (e) => {
+  //  let productId = e.target.id;
+  //  axios.get("/proucts/${productId}")
+
+
+  // }
+
   const Gallery = () => {
     console.log(productList)
     return <section className="products">
@@ -29,7 +36,7 @@ function Shop() {
           <div className="product-info">
                <h2 className="product-title">{product.name}</h2>
                <h4 className="product-price">${product.price/100}.00</h4>
-               <button value={index} onClick={handleClick} id="checkout-button">Buy Now</button>
+               <button value={index} onClick={handleClick} id="checkout-button">Buy Canvas</button>
 
           </div>
         </div>
@@ -76,25 +83,16 @@ function Shop() {
   return (
     <div className="shop-page-container">
     <div className="shop-page-content">
-    {/* <nav className="product-filter"> */}
     <h1 className="shop-header">Kyle Sullivan Visual</h1>
-      {/* <div className="collection-sort">
-        <label>Categories:</label>
-        <select>
-          <option value="/">All Photos</option>
-        </select>
-      </div> */}
-  {/* </nav> */}
-
   <section className="products">
       <Gallery />
   </section>
   </div>
   <footer>
       <div className="social-icons">
-      <FaInstagram className="icon" alt="Instagram" />
-      <FaYoutube className="icon" alt="Youtube" />
-      <SiVsco className="icon" alt="VSCO" />
+        <a href="https://www.instagram.com/kylesullivanvisual/" rel="noreferrer noreopener" target="_blank"><FaInstagram className="icon" alt="Instagram" /></a>
+        <a href="https://www.youtube.com/channel/UC8ECM4_4Aepqi-GhXJ5vXfA/videos" rel="noreferrer noreopener" target="_blank"><FaYoutube className="icon" alt="Youtube" /></a>
+        <a href="https://vsco.co/kylesullivanphotography/gallery" rel="noreferrer noreopener" target="_blank"><SiVsco className="icon" alt="VSCO" /></a>
       </div>
       <div className="footer-links">
       <Link className="footer-link" to="/"><h3>FAQs</h3></Link>

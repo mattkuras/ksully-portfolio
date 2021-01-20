@@ -13,7 +13,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [admin, setAdmin] = useState({})
 
-  useEffect(  () => {
+  useEffect(() => {
     loginStatus()
   }, [])
 
@@ -44,19 +44,18 @@ function App() {
     <Router>
       <Route exact path="/" component={Homepage} />
       <Route exact path="/shop" component={Shop} />
-      {/* <Route exact path="/admin" component={Admin} /> */}
       <Route exact path='/admindashboard'
         render={props => (
           <AdminDashboard {...props} handleLogin={handleLogin} loggedInStatus={isLoggedIn} />
         )}>
-        {logged ? null : <Redirect to="/admin" />}
+        {isLoggedIn ? null : <Redirect to="/admin" />}
       </Route>
       <Route exact path='/admin'
         render={props => (
           <Admin {...props} handleLogin={handleLogin} loggedInStatus={isLoggedIn} />
         )}>
+        {isLoggedIn ? <Redirect to="/admindashboard" /> : null}
       </Route>
-      {/* <Route exact path="/admin" component={Admin} /> */}
     </Router>
   );
 }

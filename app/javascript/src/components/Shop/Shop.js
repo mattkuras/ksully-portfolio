@@ -30,25 +30,8 @@ function Shop() {
   const Gallery = () => {
     console.log(productList)
     return <section className="products">
-<<<<<<< HEAD
-      {productList.map((product, index) => (
-        <div key={product.name} className="product-card" onClick={showPageClickHandler}>
-          <div className="product-image">
-            <img src={product.image_url} />
-            <img src="https://i.pinimg.com/originals/81/c3/3a/81c33af00010a4b7a05b3f35cb9943b9.jpg" />
-          </div>
-          <div className="product-info">
-            <h2 className="product-title">{product.name}</h2>
-            <h4 className="product-price">${product.price / 100}.00</h4>
-            <button value={index} onClick={handleClick} className="checkout-button">Buy Now</button>
-            {/* <button value={product.id} onClick={initializeShowProduct} className="button enlarge-btn">Enlarge Image</button> */}
-          </div>
-        </div>
-      ))}
-    </section>
-=======
        {productList.map((product, index) => (
-         <div key={product.name} className="product-card">
+         <div key={product.name} className="product-card" onClick={showPageClickHandler}>
            <div className="product-image">
               <img src={product.image_url} />
           </div>
@@ -63,17 +46,6 @@ function Shop() {
         </section>
      }
  
-  const handleClick = async (e) => {
-// dummy data for request
-  const index = e.target.value
-
-  const charge = {
-    name: productList[index].name,
-    // image: productList[index].image_url,
-    unit_amount: productList[index].price,
-    quantity: 1
->>>>>>> create_payment_result_pages
-  }
 
   const handleClick = async (e) => {
     // dummy data for request
@@ -124,37 +96,6 @@ function Shop() {
   return (
 
     <div className="shop-page-container">
-<<<<<<< HEAD
-      <div className="shop-page-content">
-        <nav className="product-filter">
-          <h1>Kyle Sullivan Visual</h1>
-          <div className="collection-sort">
-            <label>Categories:</label>
-            <select>
-              <option value="/">All Photos</option>
-            </select>
-          </div>
-        </nav>
-
-        <section className="products">
-
-          <div className="product-card">
-            <div className="product-image">
-              <img src="https://i0.wp.com/theluxurytravelexpert.com/wp-content/uploads/2019/01/zakynthos-JPEG.jpg?fit=1920%2C1080&ssl=1" />
-            </div>
-            <div className="product-info">
-              <h2 className="product-title">Montego Bay</h2>
-              <h4 className="product-price">$99.99</h4>
-              <button onClick={handleClick} id="checkout-button">Buy Now</button>
-            </div>
-          </div>
-          <Gallery />
-
-        </section>
-      </div>
-      {backdrop}
-    </div>
-=======
     <div className="shop-page-content">
     <h1 className="shop-header">Kyle Sullivan Visual</h1>
   <section className="products">
@@ -172,8 +113,8 @@ function Shop() {
       <h3 className="footer-link">Contact:<br/>kylesullivanvisual@gmail.com</h3>
       </div>
   </footer>
+  {backdrop}
   </div>
->>>>>>> create_payment_result_pages
   );
 }
 

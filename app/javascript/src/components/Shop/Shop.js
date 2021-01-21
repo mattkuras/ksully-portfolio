@@ -14,8 +14,7 @@ const stripePromise = loadStripe('pk_test_51I73MsKw5OX78tFumdDo0CLhysi8WPejrlcjA
 function Shop() {
   const [productList, setProductList] = useState([]);
   const [showOpen, setShowOpen] = useState(false)
-  const [showProductInfo, setShowProductInfo] = useState()
-  // const [showProductId, setShowProductId] = useState()
+  const [showProductInfo, setShowProductInfo] = useState({})
 
 
   useEffect(() => {
@@ -24,37 +23,50 @@ function Shop() {
       .then(data => setProductList(data));
   }, [])
 
-  const showProduct = async (e) => {
+  const handleShowProduct = async (e) => {
     showPageClickHandler()
    let productId = e.target.value;
   
    const response = fetch(`http://localhost:3000/products/${productId}`)
    .then(response => response.json())
-   .then(data => console.log(data));
+   .then(data => setShowProductInfo(data));
   }
 
   const ShowProduct = () => {
-          <div className="show-product-card">
+    return (
+      <div className="show-product-card">
+        <div className="show-product-image">
            <img src={showProductInfo.image_url} />
-           <div className="show-product-info">
-                <h3>{showProductInfo.name}</h3>
-                <h3>{showProductInfo.price}</h3>
-                <h3>Buy Now</h3>
-           </div>
         </div>
+         <div className="show-product-info">
+            <h1 className="show-product-header">Product Info</h1>
+            <h2>{showProductInfo.name}</h2>
+            <select>
+              <option default>Choose Canvas Size...</option>
+              <option>8 X 12</option>
+              <option>12 X 16</option>
+              <option>18 X 26</option>
+            </select>
+            <h2>Price: ${showProductInfo.price/100}.00</h2>
+            <button onClick={handleClick} className="check-button">Buy Canvas</button>
+          </div>
+      </div>
+    )
   }
+
+ 
 
   const Gallery = () => {
     return <section className="products">
        {productList.map((product, index) => (
-         <div key={product.name} className="product-card" onClick={showProduct}>
+         <div key={product.name} className="product-card">
            <div className="product-image">
               <img src={product.image_url} />
           </div>
           <div className="product-info">
                <h2 className="product-title">{product.name}</h2>
                <h4 className="product-price">${product.price/100}.00</h4>
-               <button value={product.id} onClick={showProduct} id="checkout-button">Buy Canvas</button>
+               <button value={product.id} onClick={handleShowProduct} className="check-button">Buy Canvas</button>
 
           </div>
         </div>
@@ -68,9 +80,9 @@ function Shop() {
     const index = e.target.value
 
     const charge = {
-      name: productList[index].name,
-      image: productList[index].image_url,
-      unit_amount: productList[index].price,
+      name: showProductInfo.name,
+      image: showProductInfo.image_url,
+      unit_amount: showProductInfo.price,
       quantity: 1
     }
     //Get Instance of Stripe
@@ -112,7 +124,7 @@ function Shop() {
   return (
 
     <div className="shop-page-container">
-      {showOpen ? <ShowProduct/> : null }
+      {showOpen && ShowProduct != undefined ? <ShowProduct/> : null }
     <div className="shop-page-content">
     <h1 className="shop-header">Kyle Sullivan Visual</h1>
   <section className="products">

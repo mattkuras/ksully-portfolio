@@ -5,13 +5,17 @@ import {FaYoutube} from "react-icons/fa"
 import {SiVsco} from "react-icons/si"
 import { loadStripe } from "@stripe/stripe-js"
 import "./Shop.css"
+import "./ShowProduct.css"
 import Backdrop from '../backdrop/backdrop.js'
+// import ShowProduct from "./ShowProduct"
 const stripePromise = loadStripe('pk_test_51I73MsKw5OX78tFumdDo0CLhysi8WPejrlcjAjqIvYRo1dAOAr0kFGiFXVUXph8T2RXjv6ikYWCZyKKLDt7Fhj6t00DTnSFBMD')
 
 
 function Shop() {
   const [productList, setProductList] = useState([]);
   const [showOpen, setShowOpen] = useState(false)
+  const [showProductInfo, setShowProductInfo] = useState()
+  // const [showProductId, setShowProductId] = useState()
 
 
   useEffect(() => {
@@ -20,25 +24,37 @@ function Shop() {
       .then(data => setProductList(data));
   }, [])
 
-  // const showProduct = (e) => {
-  //  let productId = e.target.id;
-  //  axios.get("/proucts/${productId}")
+  const showProduct = async (e) => {
+    showPageClickHandler()
+   let productId = e.target.value;
+  
+   const response = fetch(`http://localhost:3000/products/${productId}`)
+   .then(response => response.json())
+   .then(data => console.log(data));
+  }
 
-
-  // }
+  const ShowProduct = () => {
+          <div className="show-product-card">
+           <img src={showProductInfo.image_url} />
+           <div className="show-product-info">
+                <h3>{showProductInfo.name}</h3>
+                <h3>{showProductInfo.price}</h3>
+                <h3>Buy Now</h3>
+           </div>
+        </div>
+  }
 
   const Gallery = () => {
-    console.log(productList)
     return <section className="products">
        {productList.map((product, index) => (
-         <div key={product.name} className="product-card" onClick={showPageClickHandler}>
+         <div key={product.name} className="product-card" onClick={showProduct}>
            <div className="product-image">
               <img src={product.image_url} />
           </div>
           <div className="product-info">
                <h2 className="product-title">{product.name}</h2>
                <h4 className="product-price">${product.price/100}.00</h4>
-               <button value={index} onClick={handleClick} id="checkout-button">Buy Canvas</button>
+               <button value={product.id} onClick={showProduct} id="checkout-button">Buy Canvas</button>
 
           </div>
         </div>
@@ -96,6 +112,7 @@ function Shop() {
   return (
 
     <div className="shop-page-container">
+      {showOpen ? <ShowProduct/> : null }
     <div className="shop-page-content">
     <h1 className="shop-header">Kyle Sullivan Visual</h1>
   <section className="products">

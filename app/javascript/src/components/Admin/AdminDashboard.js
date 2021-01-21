@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react"
+import {Link} from "react-router-dom"
 import "./Admin.css"
 import { DirectUpload } from 'activestorage';
 
@@ -38,7 +39,6 @@ const Admin = () => {
             <h3>Price: ${product.price/100}</h3>
             <h3>Category: {product.category}</h3>
             <div className="btn-container"> 
-               <button className="btn edit-btn">Edit</button>
                <button value={product.id} onClick={handleDelete} className="btn delete-btn">Delete</button>
             </div>
             </div>
@@ -50,7 +50,7 @@ const Admin = () => {
    const createProduct = async () => {
     let product = {
         name: productName,
-        price: productPrice,
+        price: productPrice * 100,
         category: productCategory,
         image: productImage
       }
@@ -91,7 +91,13 @@ const Admin = () => {
      
     return (
         <div className="admin-page-container">
-            <h1>Admin Dashboard</h1>
+            <div className="header">
+              <h2 className="header-item">Admin Dashboard</h2>
+              <div className="header-links">
+              <Link className="link header-item" to="/shop"><h1>Go To Shop</h1></Link>
+              <Link className="link header-item" to="/"><h1>Logout</h1></Link>
+              </div>
+            </div>
             <form onSubmit={handleFormSubmit} className="product-form">
                 <input onChange={e => setProductImage(e.target.files[0]) } className="product-info" type="file" />
                 <input value={productName} onChange={(e) => setProductName(e.target.value) }  className="product-info" type="text" placeholder="Enter Product Name Here" />
@@ -104,7 +110,7 @@ const Admin = () => {
                     <option>Spring</option>
                     <option>Other</option>
                 </select>
-                <input type="submit" />
+                <input className="btn btn-submit" type="submit" />
             </form>
             <Gallery />
         </div>

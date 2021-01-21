@@ -1,4 +1,8 @@
 import React, { useState, useEffect } from "react"
+import {Link} from "react-router-dom"
+import {FaInstagram} from "react-icons/fa"
+import {FaYoutube} from "react-icons/fa"
+import {SiVsco} from "react-icons/si"
 import { loadStripe } from "@stripe/stripe-js"
 import "./Shop.css"
 import Backdrop from '../backdrop/backdrop.js'
@@ -16,9 +20,17 @@ function Shop() {
       .then(data => setProductList(data));
   }, [])
 
+  // const showProduct = (e) => {
+  //  let productId = e.target.id;
+  //  axios.get("/proucts/${productId}")
+
+
+  // }
+
   const Gallery = () => {
     console.log(productList)
     return <section className="products">
+<<<<<<< HEAD
       {productList.map((product, index) => (
         <div key={product.name} className="product-card" onClick={showPageClickHandler}>
           <div className="product-image">
@@ -34,6 +46,33 @@ function Shop() {
         </div>
       ))}
     </section>
+=======
+       {productList.map((product, index) => (
+         <div key={product.name} className="product-card">
+           <div className="product-image">
+              <img src={product.image_url} />
+          </div>
+          <div className="product-info">
+               <h2 className="product-title">{product.name}</h2>
+               <h4 className="product-price">${product.price/100}.00</h4>
+               <button value={index} onClick={handleClick} id="checkout-button">Buy Canvas</button>
+
+          </div>
+        </div>
+       ))}
+        </section>
+     }
+ 
+  const handleClick = async (e) => {
+// dummy data for request
+  const index = e.target.value
+
+  const charge = {
+    name: productList[index].name,
+    // image: productList[index].image_url,
+    unit_amount: productList[index].price,
+    quantity: 1
+>>>>>>> create_payment_result_pages
   }
 
   const handleClick = async (e) => {
@@ -85,6 +124,7 @@ function Shop() {
   return (
 
     <div className="shop-page-container">
+<<<<<<< HEAD
       <div className="shop-page-content">
         <nav className="product-filter">
           <h1>Kyle Sullivan Visual</h1>
@@ -114,6 +154,26 @@ function Shop() {
       </div>
       {backdrop}
     </div>
+=======
+    <div className="shop-page-content">
+    <h1 className="shop-header">Kyle Sullivan Visual</h1>
+  <section className="products">
+      <Gallery />
+  </section>
+  </div>
+  <footer>
+      <div className="social-icons">
+        <a href="https://www.instagram.com/kylesullivanvisual/" rel="noreferrer noreopener" target="_blank"><FaInstagram className="icon" alt="Instagram" /></a>
+        <a href="https://www.youtube.com/channel/UC8ECM4_4Aepqi-GhXJ5vXfA/videos" rel="noreferrer noreopener" target="_blank"><FaYoutube className="icon" alt="Youtube" /></a>
+        <a href="https://vsco.co/kylesullivanphotography/gallery" rel="noreferrer noreopener" target="_blank"><SiVsco className="icon" alt="VSCO" /></a>
+      </div>
+      <div className="footer-links">
+      <Link className="footer-link" to="/"><h3>FAQs</h3></Link>
+      <h3 className="footer-link">Contact:<br/>kylesullivanvisual@gmail.com</h3>
+      </div>
+  </footer>
+  </div>
+>>>>>>> create_payment_result_pages
   );
 }
 

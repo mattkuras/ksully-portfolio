@@ -4,6 +4,8 @@ import { Redirect, Route, BrowserRouter as Router } from "react-router-dom"
 import Homepage from "./components/Hompage/Homepage"
 import Shop from "./components/Shop/Shop"
 import AdminDashboard from "./components/Admin/AdminDashboard"
+import PaymentSuccess from "./components/PaymentPages/PaymentSuccess"
+import PaymentFailure from "./components/PaymentPages/PaymentFailure"
 import Admin from "./components/Admin/Admin"
 import axios from 'axios'
 
@@ -43,6 +45,8 @@ function App() {
   return (
     <Router>
       <Route exact path="/" component={Homepage} />
+      <Route exact path="/paymentsuccess" component={PaymentSuccess} />
+      <Route exact path="/paymentfailure" component={PaymentFailure} />
       <Route exact path="/shop" component={Shop} />
       <Route exact path='/admindashboard'
         render={props => (

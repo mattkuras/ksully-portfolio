@@ -22,7 +22,7 @@ class ChargesController < ApplicationController
       }],
       mode: "payment",
 
-      success_url: "https://example.com/success",
+      success_url: "https://www.facebook.com",
       cancel_url: "https://example.com/cancel",
     })
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import {Link} from "react-router-dom"
-import {FaInstagram} from "react-icons/fa"
-import {FaYoutube} from "react-icons/fa"
+import {FaInstagram, FaYoutube} from "react-icons/fa"
+import {IoMdClose} from 'react-icons/io'
 import {SiVsco} from "react-icons/si"
 import { loadStripe } from "@stripe/stripe-js"
 import "./Shop.css"
@@ -39,13 +39,19 @@ function Shop() {
            <img src={showProductInfo.image_url} />
         </div>
          <div className="show-product-info">
-            <h1 className="show-product-header">Product Info</h1>
-            <h2>{showProductInfo.name}</h2>
+           <span className='close-button' onClick={backdropClickHandler}><IoMdClose/></span>
+            <h1 className='product-name'>{showProductInfo.name}</h1>
             <select>
               <option default>Choose Canvas Size...</option>
               <option>8 X 12</option>
               <option>12 X 16</option>
               <option>18 X 26</option>
+            </select>
+            <select>
+              <option default>Quantity</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
             </select>
             <h2>Price: ${showProductInfo.price/100}.00</h2>
             <button onClick={handleClick} className="check-button">Buy Canvas</button>
@@ -113,7 +119,6 @@ function Shop() {
   }
   const backdropClickHandler = () => {
     setShowOpen(false)
-    console.log('clicked')
   }
   let backdrop;
 

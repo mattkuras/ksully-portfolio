@@ -1,0 +1,34 @@
+.payment-page-content {
+  text-align: center;
+}
+
+.icon-container {
+  margin: 4rem auto;
+  text-align: center;
+}
+
+.checkmark-icon {
+  font-size: 64px;
+  color: green;
+}
+
+.failure-icon {
+  font-size: 64px;
+  color: red;
+}
+
+.footer-container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.back-button {
+  text-decoration: none;
+  font-size: 36px;
+  color: blue !important;
+}
+
+.back-button:hover {
+  color: #000 !important;
+}

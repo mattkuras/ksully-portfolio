@@ -15,6 +15,7 @@ function Shop() {
   const [showOpen, setShowOpen] = useState(false)
   const [showProductInfo, setShowProductInfo] = useState({})
   const [showProductSize, setShowProductSize] = useState("small")
+  const [productPrice, setProductPrice] = useState(0)
 
 
   useEffect(() => {
@@ -25,8 +26,24 @@ function Shop() {
 
   const handleSizeChange = (e) => {
     const option = e.target
-    option.classList.add("selected")
+    if(e.target.id === "small"){
+      setProductPrice(100)
+    } else {
+      setProductPrice(200)
+    }
    setShowProductSize(e.target.id)
+  }
+
+  const setSelected = (e) => {
+    const option = e.target
+    console.log(option)
+    option.classList.add("selected")
+  }
+
+  const removeSelected = (e) => {
+    const option = e.target
+    console.log(option)
+    option.classList.remove("selected")
   }
 
   const handleShowProduct = async (e) => {
@@ -50,8 +67,8 @@ function Shop() {
          <AiOutlineClose onClick={backdropClickHandler} className="close-icon" />
             <h1 className="show-product-header">Order Details</h1>
             <div className="size-selectors">
-            <h2 className="select-option" onClick={handleSizeChange} id="small">8.5 X 11</h2>
-              <h2 className="select-option" onClick={handleSizeChange} id="large">13 X 19</h2>
+              <input type="button" className="select-option" onFocus={setSelected} onBlur={removeSelected} onClick={handleSizeChange} id="small" value="8.5 X 11"/>
+              <input type="button" className="select-option" onFocus={setSelected} onBlur={removeSelected} onClick={handleSizeChange} id="large" value="13 X 19"/>
             </div>
             {showProductSize == "small" ? <h2>Price: $100.00</h2>  : <h2>Price: $200.00</h2>}
             <button onClick={handleClick} className="check-button">Buy Print</button>
@@ -74,13 +91,11 @@ function Shop() {
  
 
   const handleClick = async (e) => {
-    // dummy data for request
-    const index = e.target.value
 
     const charge = {
       name: showProductInfo.name,
       image: showProductInfo.image_url,
-      unit_amount: showProductInfo.price,
+      unit_amount: productPrice * 100,
       quantity: 1
     }
     //Get Instance of Stripe

@@ -4,7 +4,7 @@
 
 .title {
   font-family: "Dancing Script", cursive;
-  color: lightblue;
+  color: #000;
   font-weight: 200;
   font-size: 8rem;
   margin-bottom: 100px;
@@ -21,7 +21,8 @@ span {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-image: url(kyles_background.jpg);
+  /* background-image: url(kyles_background.jpg); */
+  background: linear-gradient(105deg, #0111ff 25%, #fff 25%);
 }
 
 .home-link-item {
@@ -30,21 +31,19 @@ span {
   font-weight: 100;
   font-size: 5rem;
   letter-spacing: 3px;
-  border-radius: 1px;
+  border-radius: 15px;
   width: 350px;
   text-align: center;
   color: white;
-  background: linear-gradient(to left, salmon 50%, lightblue 50%) right;
+  background: linear-gradient(to left, #0111ff 50%, #333 50%) right;
   background-size: 200%;
   transition: 0.5s ease-out;
-  border: 3px solid salmon;
+  /* box-shadow: -5px 5px 1px rgba(0, 0, 0, 0.3); */
 }
 
 .home-link-item:hover {
-  border: 3px solid #fff;
   cursor: pointer;
   background-position: left;
-  color: #000;
 }
 
 @media only screen and (max-width: 1600px) {

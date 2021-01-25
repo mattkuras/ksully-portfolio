@@ -11,7 +11,7 @@ const Admin = (props) => {
     const [productCategory, setProductCategory] = useState('');
 
     useEffect(() => {
-      const response = fetch('http://localhost:3000/products')
+      const response = fetch('/products')
       .then(response => response.json())
       .then(data => setProductList(data));
     }, [])

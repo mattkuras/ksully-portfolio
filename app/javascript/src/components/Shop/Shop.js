@@ -19,7 +19,7 @@ function Shop() {
 
 
   useEffect(() => {
-    const response = fetch('http://localhost:3000/products')
+    const response = fetch('/products')
       .then(response => response.json())
       .then(data => setProductList(data));
   }, [])
@@ -50,7 +50,7 @@ function Shop() {
     showPageClickHandler()
     let productId = e.target.id
   
-   const response = await fetch(`http://localhost:3000/products/${productId}`)
+   const response = await fetch(`/products/${productId}`)
    .then(response => response.json())
    .then(data => setShowProductInfo(data));
   }

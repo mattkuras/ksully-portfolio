@@ -6,7 +6,7 @@ const ShowProduct = (props) => {
     const [showProductInfo, setShowProductInfo] = useState()
 
 useEffect (() => {
-    const response = fetch(`http://localhost:3000/products/${props.id}`)
+    const response = fetch(`/products/${props.id}`)
     .then(response => response.json())
     .then(data => setShowProductInfo(data));
 })

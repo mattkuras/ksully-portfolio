@@ -3,7 +3,7 @@ import {Link} from "react-router-dom"
 import "./Admin.css"
 import { DirectUpload } from 'activestorage';
 
-const Admin = () => {
+const Admin = (props) => {
   const [productList, setProductList] = useState([]);
     const [productImage, setProductImage] = useState('');
     const [productName, setProductName] = useState('');
@@ -95,7 +95,7 @@ const Admin = () => {
               <h2 className="header-item">Admin Dashboard</h2>
               <div className="header-links">
               <Link className="link header-item" to="/shop"><h1>Go To Shop</h1></Link>
-              <Link className="link header-item" to="/"><h1>Logout</h1></Link>
+              <Link className="link header-item" to="/admin"><h1 onClick={props.handleLogout}>Logout</h1></Link>
               </div>
             </div>
             <form onSubmit={handleFormSubmit} className="product-form">

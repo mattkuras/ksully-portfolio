@@ -108,6 +108,10 @@ span {
 
 /* ANIMATION */
 
+.fadein {
+  width: 100%;
+}
+
 .fadein img {
   position: fixed;
   left: 0;

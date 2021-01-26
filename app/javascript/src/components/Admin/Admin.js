@@ -43,7 +43,6 @@ const Admin = (props) => {
                 <input className="input" type="password" placeholder="Enter Password" value={password} onChange={(e) => setPassword(e.target.value)} />
                 <input type="submit" />
             </form>
-            <button onClick={redirect} >click me</button>
         </div>
     )
 }

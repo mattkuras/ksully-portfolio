@@ -29,6 +29,7 @@ a:visited {
   align-items: center;
   margin: 0.25rem;
   position: relative;
+  height: 500px;
 }
 
 .product-card:hover:after {
@@ -43,28 +44,16 @@ a:visited {
 }
 
 .product-card img {
-  width: 100%;
   height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center center;
 }
 
 .product-info {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.check-button {
-  cursor: pointer;
-  outline: none;
-  border: 1px solid #fff;
-  border-radius: 2px;
-  padding: 10px 40px;
-  font-weight: 100;
-  color: #fff;
-  background: linear-gradient(to left, #242526 50%, #fff 50%) right;
-  background-size: 200%;
-  margin-top: 1rem;
-  transition: 0.5s ease-out;
 }
 
 .check-button:hover {
@@ -93,8 +82,8 @@ h2 {
   }
 }
 
-/* @media only screen and (max-width: 600px) {
-  .products {
-    grid-template-columns: 1fr;
+@media only screen and (max-width: 450px) {
+  .product-card {
+    height: 250px;
   }
-} */
+}

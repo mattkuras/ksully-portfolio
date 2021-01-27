@@ -60,17 +60,22 @@ function Shop() {
     return (
       <div className="show-product-card">
         <div className="show-product-image">
-          <h1>{showProductInfo.name}</h1>
            <img src={showProductInfo.image_url} />
         </div>
          <div className="show-product-info">
          <AiOutlineClose onClick={backdropClickHandler} className="close-icon" />
             <h1 className="show-product-header">Order Details</h1>
+            {/* <h1 className="product-name">{showProductInfo.name}</h1>  */}
+            <ul>
+              <li className="product-details">High quality print of photo taken by Kyle Sullivan.</li>
+              <li className="product-details">Comes in two sizes: 8.5 x 11 or 13 x 19 (Choose below)</li>
+              <li className="product-details">Free shipping anywhere in the US and Canada.</li>
+            </ul>
             <div className="size-selectors">
               <input type="button" className="select-option" onFocus={setSelected} onBlur={removeSelected} onClick={handleSizeChange} id="small" value="8.5 X 11"/>
               <input type="button" className="select-option" onFocus={setSelected} onBlur={removeSelected} onClick={handleSizeChange} id="large" value="13 X 19"/>
             </div>
-            {showProductSize == "small" ? <h2>Price: $100.00</h2>  : <h2>Price: $200.00</h2>}
+            {showProductSize == "small" ? <h2 className="price">Price: $100.00</h2>  : <h2 className="price">Price: $200.00</h2>}
             <button onClick={handleClick} className="check-button">Buy Print</button>
           </div>
       </div>
@@ -96,7 +101,7 @@ function Shop() {
       name: showProductInfo.name,
       image: showProductInfo.image_url,
       unit_amount: productPrice * 100,
-      quantity: 1
+      quantity: 1 
     }
     //Get Instance of Stripe
     const stripe = await stripePromise;

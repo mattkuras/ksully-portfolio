@@ -16,7 +16,7 @@ const Footer = () => {
             </div>
             <div className="footer-links">
                  <Link className="footer-link" to="/"><h3>FAQs</h3></Link>
-                 <h3 className="footer-link">Contact:<br/>kylesullivanvisual@gmail.com</h3>
+                 <h3 className="footer-link">Contact:<br/>kylesullivan738@gmail.com</h3>
             </div>
         </footer>
     )

@@ -7,7 +7,7 @@ import "./ShowProduct.css"
 import Backdrop from '../backdrop/backdrop.js'
 import Footer from "../Footer/Footer"
 // import ShowProduct from "./ShowProduct"
-const stripePromise = loadStripe('pk_test_51I73MsKw5OX78tFumdDo0CLhysi8WPejrlcjAjqIvYRo1dAOAr0kFGiFXVUXph8T2RXjv6ikYWCZyKKLDt7Fhj6t00DTnSFBMD')
+const stripePromise = loadStripe('pk_live_51IB1JNFNqePL7pa3xw2MueUlJf4hm7ROUVT9TcxBSZa1Bjw4P7fXISfvqFf3jNs5qi4oREGiN9hlA82RBqf4QXyj000Zd8UWD7')
 
 
 function Shop() {

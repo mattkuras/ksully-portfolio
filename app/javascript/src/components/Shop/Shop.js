@@ -15,7 +15,7 @@ function Shop() {
   const [showOpen, setShowOpen] = useState(false)
   const [showProductInfo, setShowProductInfo] = useState({})
   const [showProductSize, setShowProductSize] = useState("small")
-  const [productPrice, setProductPrice] = useState(0)
+  const [productPrice, setProductPrice] = useState(35)
 
 
   useEffect(() => {
@@ -32,9 +32,9 @@ function Shop() {
   const handleSizeChange = (e) => {
     const option = e.target
     if(e.target.id === "small"){
-      setProductPrice(100)
+      setProductPrice(35)
     } else {
-      setProductPrice(200)
+      setProductPrice(50)
     }
    setShowProductSize(e.target.id)
   }
@@ -80,7 +80,7 @@ function Shop() {
               <input type="button" className="select-option" onFocus={setSelected} onBlur={removeSelected} onClick={handleSizeChange} id="small" value="8.5 X 11"/>
               <input type="button" className="select-option" onFocus={setSelected} onBlur={removeSelected} onClick={handleSizeChange} id="large" value="13 X 19"/>
             </div>
-            {showProductSize == "small" ? <h2 className="price">Price: $100.00</h2>  : <h2 className="price">Price: $200.00</h2>}
+            {showProductSize == "small" ? <h2 className="price">Price: $35.00</h2>  : <h2 className="price">Price: $50.00</h2>}
             <button onClick={handleClick} className="check-button">Buy Print</button>
           </div>
       </div>

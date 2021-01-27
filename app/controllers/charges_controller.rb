@@ -22,8 +22,8 @@ class ChargesController < ApplicationController
       }],
       mode: "payment",
 
-      success_url: "/paymentsuccess",
-      cancel_url: "/paymentfailure",
+      success_url: "https://kyle-sullivan-visual.herokuapp.com/paymentsuccess",
+      cancel_url: "https://kyle-sullivan-visual.herokuapp.com/paymentfailure",
     })
 
     render json: { id: session.id }.to_json

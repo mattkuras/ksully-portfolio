@@ -6,7 +6,7 @@ import "./Shop.css"
 import "./ShowProduct.css"
 import Backdrop from '../backdrop/backdrop.js'
 import Footer from "../Footer/Footer"
-// import ShowProduct from "./ShowProduct"
+import header from "./header.png"
 const stripePromise = loadStripe('pk_live_51IB1JNFNqePL7pa3xw2MueUlJf4hm7ROUVT9TcxBSZa1Bjw4P7fXISfvqFf3jNs5qi4oREGiN9hlA82RBqf4QXyj000Zd8UWD7')
 
 
@@ -23,6 +23,11 @@ function Shop() {
       .then(response => response.json())
       .then(data => setProductList(data));
   }, [])
+
+  const scrollUp = () => {
+    document.body.scrollTop = 0
+    document.documentElement.scrollTop = 0
+  }
 
   const handleSizeChange = (e) => {
     const option = e.target
@@ -87,8 +92,8 @@ function Shop() {
   const Gallery = () => {
     return <section className="products">
        {productList.map((product, index) => (
-         <div id={product.id} key={product.name} className="product-card" onClick={handleShowProduct}> 
-              <img src={product.image_url} />
+         <div onClick={scrollUp()} id={product.id} key={product.name} className="product-card" onClick={handleShowProduct}> 
+              <img onClick={scrollUp()} src={product.image_url} />
         </div>
        ))}
         </section>
@@ -144,6 +149,7 @@ function Shop() {
       {showOpen && ShowProduct != undefined ? <ShowProduct/> : null }
     <div className="shop-page-content">
     <h1 className="shop-header">Kyle Sullivan Visual</h1>
+    <h3 className="call-to-action">Buy High Quality Prints Below</h3>
       <Gallery />
   </div>
   <Footer />

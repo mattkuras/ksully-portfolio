@@ -1,9 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,500;1,400&display=swap");
 
 .shop-page-content {
   width: 90vw;
   margin: 0 auto;
   padding-top: 1rem;
+}
+
+.call-to-action {
+  text-align: center;
+  color: #242526;
+  padding-bottom: 2rem;
 }
 
 a:visited {
@@ -72,11 +79,23 @@ h2 {
   font-size: 3rem;
   padding-bottom: 25px;
   text-align: center;
-  font-family: "Dancing Script", cursive;
+  font-family: "Raleway", sans-serif;
   border-bottom: 1px solid #ccc;
 }
 
 @media only screen and (max-width: 1150px) {
+  .products {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media only screen and (max-width: 560px) {
+  .products {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media only screen and (max-width: 500px) {
   .products {
     grid-template-columns: 1fr 1fr;
   }

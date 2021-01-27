@@ -22,8 +22,8 @@ class ChargesController < ApplicationController
       }],
       mode: "payment",
 
-      success_url: "https://www.facebook.com",
-      cancel_url: "https://example.com/cancel",
+      success_url: "/paymentsuccess",
+      cancel_url: "/paymentfailure",
     })
 
     render json: { id: session.id }.to_json

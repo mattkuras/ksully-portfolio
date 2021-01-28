@@ -148,7 +148,7 @@ function Shop() {
     <div className="shop-page-container">
       {showOpen && ShowProduct != undefined ? <ShowProduct/> : null }
     <div className="shop-page-content">
-    <h1 className="shop-header">Kyle Sullivan Visual</h1>
+    <a href='/'><h1 className="shop-header">Kyle Sullivan Visual</h1></a>
     <h3 className="call-to-action">Buy High Quality Prints Below</h3>
       <Gallery />
   </div>

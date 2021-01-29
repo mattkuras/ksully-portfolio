@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@300&display=swap");
 
 .shop-page-content {
   width: 90vw;
@@ -7,12 +6,42 @@
   padding-top: 1rem;
 }
 
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 25px;
+  align-items: baseline;
+}
+
+.drop-down-btn {
+  order: 2;
+  display: none;
+  border: none;
+  outline: none;
+  background-color: #fff;
+  font-size: 2.5rem;
+  color: #333;
+  cursor: pointer;
+}
+
+.nav-links a {
+  color: #242526;
+  font-size: 1.3rem;
+  padding: 1rem;
+}
+
+.nav-links a:hover {
+  color: #ccc;
+  cursor: pointer;
+}
+
 .call-to-action {
   text-align: center;
   color: black;
   font-size: 2rem;
-  padding-bottom: 5px;
-  font-family: 'Rajdhani', sans-serif;
+  padding: 10px;
+  font-family: "Rajdhani", sans-serif;
   font-weight: 500;
 }
 
@@ -80,11 +109,11 @@ h2 {
 .shop-header {
   color: black;
   font-size: 3rem;
-  padding-bottom: 25px;
-  text-align: right;
-  font-family: 'Rajdhani', sans-serif;
+  /* padding-bottom: 25px;
+  text-align: right; */
+  font-family: "Rajdhani", sans-serif;
   font-weight: 300;
-  border-bottom: 1px solid #ccc;
+  /* border-bottom: 1px solid #ccc; */
 }
 
 @media only screen and (max-width: 1150px) {
@@ -93,9 +122,30 @@ h2 {
   }
 }
 
+@media only screen and (max-width: 1000px) {
+  .nav-links {
+    display: none;
+  }
+
+  .drop-down-btn {
+    display: block;
+  }
+  .shop-header {
+    order: 1;
+  }
+}
+
 @media only screen and (max-width: 560px) {
   .products {
     grid-template-columns: 1fr;
+  }
+
+  .shop-header {
+    font-size: 2rem;
+  }
+
+  .drop-down-btn {
+    font-size: 1.3rem;
   }
 }
 

@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react"
 import {Link} from "react-router-dom"
 import {AiOutlineClose} from "react-icons/ai"
+import {GiHamburgerMenu} from "react-icons/gi"
 import { loadStripe } from "@stripe/stripe-js"
 import "./Shop.css"
 import "./ShowProduct.css"
 import Backdrop from '../backdrop/backdrop.js'
+import Dropdown from "../Dropdown/Dropdown.js"
 import Footer from "../Footer/Footer"
 import header from "./header.png"
 const stripePromise = loadStripe('pk_live_51IB1JNFNqePL7pa3xw2MueUlJf4hm7ROUVT9TcxBSZa1Bjw4P7fXISfvqFf3jNs5qi4oREGiN9hlA82RBqf4QXyj000Zd8UWD7')
@@ -13,6 +15,7 @@ const stripePromise = loadStripe('pk_live_51IB1JNFNqePL7pa3xw2MueUlJf4hm7ROUVT9T
 function Shop() {
   const [productList, setProductList] = useState([]);
   const [showOpen, setShowOpen] = useState(false)
+  const [dropDownOpen, setDropDownOpen] = useState(false)
   const [showProductInfo, setShowProductInfo] = useState({})
   const [showProductSize, setShowProductSize] = useState("small")
   const [productPrice, setProductPrice] = useState(35)
@@ -143,16 +146,38 @@ function Shop() {
     backdrop = <Backdrop close={backdropClickHandler} />
   }
 
+  let dropDown;
+
+  const dropDownClickHandler = () => {
+    setDropDownOpen(true)
+  }
+
+  if(dropDownOpen) {
+    dropDown = <Dropdown />
+  }
+
   return (
 
     <div className="shop-page-container">
       {showOpen && ShowProduct != undefined ? <ShowProduct/> : null }
     <div className="shop-page-content">
-    <a href='/'><h1 className="shop-header">Kyle Sullivan Visual</h1></a>
+      <nav className="navbar">
+        <button className="drop-down-btn"><GiHamburgerMenu onClick={dropDownClickHandler} className="drop-down-icon" /></button>
+        <div className="nav-links">
+            <a>Homepage</a>
+            <a>Contact</a>
+            <a>FAQs</a>
+            <a>Gallery</a>
+        </div>
+        <div>
+          <a href='/'><h1 className="shop-header">Kyle Sullivan Visual</h1></a>
+        </div>
+      </nav>
     <h3 className="call-to-action">Buy High Quality Prints Below</h3>
       <Gallery />
   </div>
   <Footer />
+  {dropDown}
   {backdrop}
   </div>
   );

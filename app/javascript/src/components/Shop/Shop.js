@@ -89,7 +89,7 @@ function Shop() {
               <h2 className="select-option" onClick={setLargeSelected} id="large" value="13 X 19">13 X 19</h2>
             
             </div>
-            {showProductSize == "small" ? <h2 className="price">Price: ${productPrice}.00 (8.5 x 11 Print)</h2>  : <h2 className="price">Price: ${productPrice}.00 (13 x 19 Print)</h2>}
+            {showProductSize == "small" ? <h2 className="price">Price: ${productPrice}.00</h2>  : <h2 className="price">Price: ${productPrice}.00</h2>}
             <button onClick={handleClick} className="check-button">Buy Print</button>
           </div>
       </div>
@@ -157,6 +157,7 @@ function Shop() {
   }
 
   const showPageClickHandler = () => {
+    setProductPrice(0)
     setShowOpen(true)
   }
   const backdropClickHandler = () => {

@@ -36,6 +36,11 @@
   cursor: pointer;
 }
 
+.selected {
+  background-color: #242526;
+  color: #fff;
+}
+
 .call-to-action {
   text-align: center;
   color: black;

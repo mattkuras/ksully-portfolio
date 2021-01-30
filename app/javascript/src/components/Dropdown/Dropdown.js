@@ -1,8 +1,10 @@
 import React from 'react'
 import './Dropdown.css'
+import {AiOutlineClose} from "react-icons/ai"
 
 const Dropdown = props => (
-    <div className='dropdown' onClick={props.close}>
+    <div className='dropdown'>
+            <AiOutlineClose className="close-dropdown" onClick={props.close} />
             <a>Homepage</a>
             <a>Contact</a>
             <a>FAQs</a>

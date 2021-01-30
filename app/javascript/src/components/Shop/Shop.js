@@ -8,7 +8,6 @@ import "./ShowProduct.css"
 import Backdrop from '../backdrop/backdrop.js'
 import Dropdown from "../Dropdown/Dropdown.js"
 import Footer from "../Footer/Footer"
-import header from "./header.png"
 const stripePromise = loadStripe('pk_live_51IB1JNFNqePL7pa3xw2MueUlJf4hm7ROUVT9TcxBSZa1Bjw4P7fXISfvqFf3jNs5qi4oREGiN9hlA82RBqf4QXyj000Zd8UWD7')
 
 
@@ -17,8 +16,8 @@ function Shop() {
   const [showOpen, setShowOpen] = useState(false)
   const [dropDownOpen, setDropDownOpen] = useState(false)
   const [showProductInfo, setShowProductInfo] = useState({})
-  const [showProductSize, setShowProductSize] = useState("small")
-  const [productPrice, setProductPrice] = useState(35)
+  const [showProductSize, setShowProductSize] = useState("")
+  const [productPrice, setProductPrice] = useState(0)
 
 
   useEffect(() => {
@@ -27,31 +26,38 @@ function Shop() {
       .then(data => setProductList(data));
   }, [])
 
+  useEffect((e) => {
+    console.log("triggered THE PRODUCT SIZE USE EFFECT::::::")
+      if(showProductSize === "small"){
+        setProductPrice(35)
+        console.log("SMALL")
+      } else if(showProductSize === "large") {
+        setProductPrice(50)
+        console.log("LARGE")
+      } else {
+        return
+      }
+  }, [showProductSize])
+
+  useEffect((e) => {
+      if(productPrice === 35){
+          let smallPrint = document.getElementById("small")
+          let largePrint = document.getElementById("large")
+          smallPrint.classList.add("selected")
+          largePrint.classList.remove("selected")
+      } else if(productPrice === 50) {
+          let largePrint = document.getElementById("large")
+          let smallPrint = document.getElementById("small")
+          largePrint.classList.add("selected")
+          smallPrint.classList.remove("selected")
+      } else {
+          return
+      }
+  }, [productPrice])
+
   const scrollUp = () => {
     document.body.scrollTop = 0
     document.documentElement.scrollTop = 0
-  }
-
-  const handleSizeChange = (e) => {
-    const option = e.target
-    if(e.target.id === "small"){
-      setProductPrice(35)
-    } else {
-      setProductPrice(50)
-    }
-   setShowProductSize(e.target.id)
-  }
-
-  const setSelected = (e) => {
-    const option = e.target
-    console.log(option)
-    option.classList.add("selected")
-  }
-
-  const removeSelected = (e) => {
-    const option = e.target
-    console.log(option)
-    option.classList.remove("selected")
   }
 
   const handleShowProduct = async (e) => {
@@ -73,17 +79,17 @@ function Shop() {
          <div className="show-product-info">
          <AiOutlineClose onClick={backdropClickHandler} className="close-icon" />
             <h1 className="show-product-header">Order Details</h1>
-            {/* <h1 className="product-name">{showProductInfo.name}</h1>  */}
             <ul>
               <li className="product-details">High quality print of photo taken by Kyle Sullivan.</li>
               <li className="product-details">Comes in two sizes: 8.5 x 11 or 13 x 19 (Choose below)</li>
               <li className="product-details">Free shipping anywhere in the US and Canada.</li>
             </ul>
             <div className="size-selectors">
-              <input type="button" className="select-option" onFocus={setSelected} onBlur={removeSelected} onClick={handleSizeChange} id="small" value="8.5 X 11"/>
-              <input type="button" className="select-option" onFocus={setSelected} onBlur={removeSelected} onClick={handleSizeChange} id="large" value="13 X 19"/>
+              <h2 className="select-option"  onClick={setSmallSelected} id="small" value="8.5 X 11">8.5 X 11</h2>
+              <h2 className="select-option" onClick={setLargeSelected} id="large" value="13 X 19">13 X 19</h2>
+            
             </div>
-            {showProductSize == "small" ? <h2 className="price">Price: $35.00</h2>  : <h2 className="price">Price: $50.00</h2>}
+            {showProductSize == "small" ? <h2 className="price">Price: ${productPrice}.00 (8.5 x 11 Print)</h2>  : <h2 className="price">Price: ${productPrice}.00 (13 x 19 Print)</h2>}
             <button onClick={handleClick} className="check-button">Buy Print</button>
           </div>
       </div>
@@ -94,7 +100,7 @@ function Shop() {
 
   const Gallery = () => {
     return <section className="products">
-       {productList.map((product, index) => (
+       {productList.map((product) => (
          <div onClick={scrollUp()} id={product.id} key={product.name} className="product-card" onClick={handleShowProduct}> 
               <img onClick={scrollUp()} src={product.image_url} />
         </div>
@@ -134,6 +140,22 @@ function Shop() {
     }
   }
 
+  const setSmallSelected = () => {
+    // let smallPrint = document.getElementById("small")
+    // let largePrint = document.getElementById("large")
+    // smallPrint.classList.add("selected")
+    // largePrint.classList.remove("selected")
+    setShowProductSize("small")
+  }
+
+  const setLargeSelected = () => {
+    // let largePrint = document.getElementById("large")
+    // let smallPrint = document.getElementById("small")
+    //   largePrint.classList.add("selected")
+    //   smallPrint.classList.remove("selected")
+    setShowProductSize("large")
+  }
+
   const showPageClickHandler = () => {
     setShowOpen(true)
   }
@@ -152,8 +174,12 @@ function Shop() {
     setDropDownOpen(true)
   }
 
+  const closeDropDown = () => {
+    setDropDownOpen(false)
+  }
+
   if(dropDownOpen) {
-    dropDown = <Dropdown />
+    dropDown = <Dropdown close={closeDropDown} />
   }
 
   return (

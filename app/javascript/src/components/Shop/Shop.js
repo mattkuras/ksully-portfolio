@@ -164,10 +164,10 @@ function Shop() {
       <nav className="navbar">
         <button className="drop-down-btn"><GiHamburgerMenu onClick={dropDownClickHandler} className="drop-down-icon" /></button>
         <div className="nav-links">
-            <a>Homepage</a>
+            <a href='/'>Homepage</a>
             <a>Contact</a>
             <a>FAQs</a>
-            <a>Gallery</a>
+            <a href='/shop'>Shop</a>
         </div>
         <div>
           <a href='/'><h1 className="shop-header">Kyle Sullivan Visual</h1></a>

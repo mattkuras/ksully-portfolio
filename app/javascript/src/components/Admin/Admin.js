@@ -39,8 +39,14 @@ const Admin = (props) => {
         <div className="login-page-container">
             <h1>Admin Login</h1>
             <form className="login-form" onSubmit={handleSubmit}>
-                <input className="input" type="text" placeholder="Enter Username" value={username} onChange={(e) => setUsername(e.target.value)} />
-                <input className="input" type="password" placeholder="Enter Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+              <div className="input-container">
+              <label for="username">Username: </label>
+                <input className="input" type="text" placeholder="Enter Username" id="username" value={username} onChange={(e) => setUsername(e.target.value)} />
+              </div>
+              <div className="input-container">
+              <label for="password">Password: </label>
+                <input className="input" type="password" placeholder="Enter Password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+              </div>
                 <input type="submit" />
             </form>
         </div>

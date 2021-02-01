@@ -25,16 +25,20 @@
   cursor: pointer;
 }
 
+a {
+  text-decoration: none;
+  color: #242526 !important;
+}
+
+a:hover {
+  color: #ccc !important;
+}
+
 .nav-links a {
-  color: #242526;
   font-size: 1.5rem;
   padding: 1rem;
   font-family: "Rajdhani", sans-serif;
   font-weight: 300;
-}
-
-.nav-links a:hover {
-  color: #ccc;
   cursor: pointer;
 }
 

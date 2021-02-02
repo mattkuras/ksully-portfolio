@@ -27,13 +27,10 @@ function Shop() {
   }, [])
 
   useEffect((e) => {
-    console.log("triggered THE PRODUCT SIZE USE EFFECT::::::")
       if(showProductSize === "small"){
         setProductPrice(35)
-        console.log("SMALL")
       } else if(showProductSize === "large") {
         setProductPrice(50)
-        console.log("LARGE")
       } else {
         return
       }
@@ -56,8 +53,8 @@ function Shop() {
   }, [productPrice])
 
   const scrollUp = () => {
-    document.body.scrollTop = 0
-    document.documentElement.scrollTop = 0
+    document.body.scrollTop = 200
+    document.documentElement.scrollTop = 200
   }
 
   const handleShowProduct = async (e) => {
@@ -141,18 +138,10 @@ function Shop() {
   }
 
   const setSmallSelected = () => {
-    // let smallPrint = document.getElementById("small")
-    // let largePrint = document.getElementById("large")
-    // smallPrint.classList.add("selected")
-    // largePrint.classList.remove("selected")
     setShowProductSize("small")
   }
 
   const setLargeSelected = () => {
-    // let largePrint = document.getElementById("large")
-    // let smallPrint = document.getElementById("small")
-    //   largePrint.classList.add("selected")
-    //   smallPrint.classList.remove("selected")
     setShowProductSize("large")
   }
 

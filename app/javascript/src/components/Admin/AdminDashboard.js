@@ -30,7 +30,6 @@ const Admin = (props) => {
     }
 
     const Gallery = () => {
-      // console.log(productList)
      return<div className="product-container">
         {productList.map((product) => (
           <div key={product.name} className="product">
@@ -38,8 +37,6 @@ const Admin = (props) => {
               <img src={product.image_url} alt="Photo"/>
             </div>
             <h1>{product.name}</h1>
-            {/* <h3>Price: ${product.price/100}</h3> */}
-            {/* <h3>Category: {product.category}</h3> */}
             <div className="btn-container"> 
                <button value={product.id} onClick={handleDelete} className="btn delete-btn">Delete</button>
             </div>
@@ -104,15 +101,6 @@ const Admin = (props) => {
               <h1>Add New Photo Here</h1>
                 <input onChange={e => setProductImage(e.target.files[0]) } className="product-info" type="file" />
                 <input value={productName} onChange={(e) => setProductName(e.target.value) }  className="product-info" type="text" placeholder="Enter Product Name Here" />
-                {/* <input value={productPrice} onChange={e => setProductPrice(e.target.value) }  className="product-info" type="text" placeholder="Enter Product Price Here" /> */}
-                {/* <select value={productCategory} onChange={e => setProductCategory(e.target.value) }  className="product-info">
-                    <option default>Choose a category</option>
-                    <option>Winter</option>
-                    <option>Summer</option>
-                    <option>Fall</option>
-                    <option>Spring</option>
-                    <option>Other</option>
-                </select> */}
                 <input className="btn btn-submit" type="submit" />
             </form>
             <Gallery />

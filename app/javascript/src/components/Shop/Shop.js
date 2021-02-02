@@ -131,7 +131,7 @@ function Shop() {
 
     const session = await response.json();
 
-    const result = await stripe.redirectToCheckout({
+    const result = await stripe.redireFctToCheckout({
       sessionId: session.id,
     });
     if (result.error) {

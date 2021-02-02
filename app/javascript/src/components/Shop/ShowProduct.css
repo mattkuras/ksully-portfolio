@@ -19,13 +19,15 @@
 
 .close-icon {
   margin-left: 90%;
-  font-size: 1.3rem;
+  font-size: 1.8rem;
   cursor: pointer;
 }
+
+.close-icon:hover {
+  color: #000;
+}
 .show-product-header {
-  /* font-family: "Dancing Script", cursive; */
   font-family: "Raleway", sans-serif;
-  /* color: #4eadfa; */
   color: #000;
 }
 
@@ -153,24 +155,18 @@
 
 @media only screen and (max-width: 600px) {
   .show-product-card {
-    height: 100vh;
+    margin-top: 50vh;
+    height: 150vh;
     width: 95vw;
   }
   .select-option {
-    font-size: 14px;
+    font-size: 12px;
   }
 }
 
 @media only screen and (max-width: 376px) {
   .show-product-info {
-    padding-bottom: 7rem;
-    padding-top: 5rem;
+    padding-bottom: 4rem;
+    padding-top: 3rem;
   }
 }
-
-/* @media only screen and (max-width: 350px) {
-  .show-product-info {
-    padding-top: 50px;
-    padding-bottom: 100px;
-  }
-} */

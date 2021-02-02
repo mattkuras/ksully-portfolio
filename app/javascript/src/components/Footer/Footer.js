@@ -14,10 +14,9 @@ const Footer = () => {
                  <a href="https://www.youtube.com/channel/UC8ECM4_4Aepqi-GhXJ5vXfA/videos" rel="noreferrer noreopener" target="_blank"><FaYoutube className="icon" alt="Youtube" /></a>
                  <a href="https://vsco.co/kylesullivanphotography/gallery" rel="noreferrer noreopener" target="_blank"><SiVsco className="icon" alt="VSCO" /></a>
             </div>
-            <div className="footer-links">
-                 <Link className="footer-link" to="/"><h3>FAQs</h3></Link>
+            {/* <div className="footer-links">
                  <h3 className="footer-link">Contact:<br/>kylesullivan738@gmail.com</h3>
-            </div>
+            </div> */}
         </footer>
     )
 }

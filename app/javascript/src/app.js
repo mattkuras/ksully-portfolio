@@ -47,6 +47,7 @@ function App() {
       <Route exact path="/paymentsuccess" component={PaymentSuccess} />
       <Route exact path="/paymentfailure" component={PaymentFailure} />
       <Route exact path="/shop" component={Shop} />
+      <Route exact path="/faq" component={Faq}></Route>
       <Route exact path='/admindashboard'
         render={props => (
           <AdminDashboard {...props} handleLogin={handleLogin} handleLogout={handleLogout} loggedInStatus={isLoggedIn} />

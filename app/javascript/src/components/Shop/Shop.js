@@ -5,7 +5,7 @@ import {GiHamburgerMenu} from "react-icons/gi"
 import { loadStripe } from "@stripe/stripe-js"
 import "./Shop.css"
 import "./ShowProduct.css"
-import Backdrop from '../backdrop/backdrop.js'
+import Backdrop from '../Backdrop/backdrop.js'
 import Dropdown from "../Dropdown/Dropdown.js"
 import Footer from "../Footer/Footer"
 const stripePromise = loadStripe('pk_live_51IB1JNFNqePL7pa3xw2MueUlJf4hm7ROUVT9TcxBSZa1Bjw4P7fXISfvqFf3jNs5qi4oREGiN9hlA82RBqf4QXyj000Zd8UWD7')

@@ -21,7 +21,6 @@ function Shop() {
   const [showProductSize, setShowProductSize] = useState("")
   const [productPrice, setProductPrice] = useState(0)
 
-
   useEffect(() => {
     const response = fetch('/products')
       .then(response => response.json())
@@ -62,14 +61,12 @@ function Shop() {
   const handleShowProduct = async (e) => {
     showPageClickHandler()
     let productId = e.target.id
-
     const response = await fetch(`/products/${productId}`)
       .then(response => response.json())
       .then(data => setShowProductInfo(data));
   }
 
   const ShowProduct = () => {
-
     return (
       <div className="show-product-card">
         <div className="show-product-image">
@@ -96,7 +93,6 @@ function Shop() {
   }
 
 
-
   const Gallery = () => {
     return <section className="products">
       {productList.map((product) => (
@@ -106,7 +102,6 @@ function Shop() {
       ))}
     </section>
   }
-
 
   const handleClick = async (e) => {
 
@@ -142,7 +137,6 @@ function Shop() {
   const setSmallSelected = () => {
     setShowProductSize("small")
   }
-
   const setLargeSelected = () => {
     setShowProductSize("large")
   }
@@ -175,23 +169,10 @@ function Shop() {
   }
 
   return (
-
     <div className="shop-page-container">
       {showOpen && ShowProduct != undefined ? <ShowProduct /> : null}
       <div className="shop-page-content">
       <Navbar />
-        {/* <nav className="navbar">
-          <button className="drop-down-btn"><GiHamburgerMenu onClick={dropDownClickHandler} className="drop-down-icon" /></button>
-          <div className="nav-links">
-            <a href='/'>Homepage</a>
-            <a>Contact</a>
-            <a href='/faq'>FAQs</a>
-            <a href='/shop'>Shop</a>
-          </div>
-          <div>
-            <a href='/'><h1 className="shop-header">Kyle Sullivan Visual</h1></a>
-          </div>
-        </nav> */}
         <h3 className="call-to-action">Buy High Quality Prints Below</h3>
         <Gallery />
       </div>

@@ -6,7 +6,7 @@
   width: 90vw;
   margin: 0 auto;
   padding-top: 1rem;
-  margin: auto auto 200px;
+  margin: auto auto 100px;
 }
 
 .faq-header {
@@ -20,6 +20,10 @@
 .faqs {
   width: 70%;
   margin: auto;
+}
+
+.q-a {
+  padding-bottom: 30px;
 }
 
 .question {

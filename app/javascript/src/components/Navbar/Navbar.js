@@ -24,7 +24,7 @@ const Navbar = () => {
                 <button className="drop-down-btn"><GiHamburgerMenu onClick={dropDownClickHandler} className="drop-down-icon" /></button>
                 <div className="nav-links">
                     <a href='/'>Homepage</a>
-                    <a>Contact</a>
+                    <a href='/contact'>Contact</a>
                     <a href='/faq'>FAQs</a>
                     <a href='/shop'>Shop</a>
                 </div>

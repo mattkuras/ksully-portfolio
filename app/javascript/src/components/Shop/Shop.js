@@ -8,6 +8,8 @@ import "./ShowProduct.css"
 import Backdrop from '../Backdrop/backdrop.js'
 import Dropdown from "../Dropdown/Dropdown.js"
 import Footer from "../Footer/Footer"
+import Navbar from '../Navbar/Navbar.js'
+
 const stripePromise = loadStripe('pk_live_51IB1JNFNqePL7pa3xw2MueUlJf4hm7ROUVT9TcxBSZa1Bjw4P7fXISfvqFf3jNs5qi4oREGiN9hlA82RBqf4QXyj000Zd8UWD7')
 
 
@@ -177,7 +179,8 @@ function Shop() {
     <div className="shop-page-container">
       {showOpen && ShowProduct != undefined ? <ShowProduct /> : null}
       <div className="shop-page-content">
-        <nav className="navbar">
+      <Navbar />
+        {/* <nav className="navbar">
           <button className="drop-down-btn"><GiHamburgerMenu onClick={dropDownClickHandler} className="drop-down-icon" /></button>
           <div className="nav-links">
             <a href='/'>Homepage</a>
@@ -188,7 +191,7 @@ function Shop() {
           <div>
             <a href='/'><h1 className="shop-header">Kyle Sullivan Visual</h1></a>
           </div>
-        </nav>
+        </nav> */}
         <h3 className="call-to-action">Buy High Quality Prints Below</h3>
         <Gallery />
       </div>

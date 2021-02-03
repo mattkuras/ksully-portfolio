@@ -6,6 +6,7 @@ import Shop from "./components/Shop/Shop"
 import AdminDashboard from "./components/Admin/AdminDashboard"
 import PaymentSuccess from "./components/PaymentPages/PaymentSuccess"
 import PaymentFailure from "./components/PaymentPages/PaymentFailure"
+import Faq from './components/Faq/Faq.js'
 import Admin from "./components/Admin/Admin"
 import axios from 'axios'
 

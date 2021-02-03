@@ -1,0 +1,75 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 25px;
+    align-items: baseline;
+  }
+
+  
+.drop-down-btn {
+    order: 2;
+    display: none;
+    border: none;
+    outline: none;
+    background-color: #fff;
+    font-size: 2.5rem;
+    color: #333;
+    cursor: pointer;
+  }
+
+  
+a {
+    text-decoration: none;
+    color: #242526 !important;
+  }
+  
+  a:hover {
+    color: #ccc !important;
+  }
+  
+  .nav-links a {
+    font-size: 1.5rem;
+    padding: 1rem;
+    font-family: "Rajdhani", sans-serif;
+    font-weight: 300;
+    cursor: pointer;
+  }
+  
+  .selected {
+    background-color: #242526;
+    color: #fff;
+  }
+
+  .shop-header {
+    color: black;
+    font-size: 3rem;
+    font-family: "Rajdhani", sans-serif;
+    font-weight: 300;
+  }
+  
+
+  @media only screen and (max-width: 1000px) {
+    .nav-links {
+      display: none;
+    }
+  
+    .drop-down-btn {
+      display: block;
+    }
+    .shop-header {
+      order: 1;
+    }
+  }
+  
+  @media only screen and (max-width: 560px) {
+
+    .shop-header {
+      font-size: 2rem;
+    }
+  
+    .drop-down-btn {
+      font-size: 1.3rem;
+    }
+  }
+  

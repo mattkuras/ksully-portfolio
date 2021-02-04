@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   root 'home#index'
 
-  post 'charges/create', to: 'charges#create'
+  post 'charges', to: 'charges#create'
+
+  post 'messages', to: 'messages#create'
+  get 'messages', to: 'messages#index'
 
   post 'products', to: 'products#create'
   get 'products/:id', to: 'products#show'

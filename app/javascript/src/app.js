@@ -8,6 +8,7 @@ import PaymentSuccess from "./components/PaymentPages/PaymentSuccess"
 import PaymentFailure from "./components/PaymentPages/PaymentFailure"
 import Faq from './components/Faq/Faq.js'
 import Contact from './components/Contact/Contact.js'
+import Messages from './components/Messages/Messages.js'
 import Admin from "./components/Admin/Admin"
 import axios from 'axios'
 
@@ -51,6 +52,7 @@ function App() {
       <Route exact path="/shop" component={Shop} />
       <Route exact path="/faq" component={Faq}/>
       <Route exact path="/contact" component={Contact}/>
+      <Route exact path="/admin/messages" component={Messages}/>
       <Route exact path='/admindashboard'
         render={props => (
           <AdminDashboard {...props} handleLogin={handleLogin} handleLogout={handleLogout} loggedInStatus={isLoggedIn} />

@@ -115,7 +115,7 @@ function Shop() {
     const stripe = await stripePromise;
 
     //Calling backend to create Checkout Session
-    const response = await fetch('/charges/create', {
+    const response = await fetch('/charges', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

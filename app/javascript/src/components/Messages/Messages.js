@@ -28,17 +28,15 @@ const Messages = () => {
     // }
 
     const MessageList = () => {
-        return <table>
+        return <div className='message-table'>
             {messages.map((message) => (
-                <tr key={message.id} className='message'>
-                    <td className='subject'>{message.subject}</td>
-                    <td className='email'>{message.email}</td>
-                    <td className='name'>{message.full_name}</td>
-                    {/* <p className='content'> {message.content}</p> */}
-                </tr>
+                <div key={message.id} className='message'>
+                    <div className='email'>{message.email}</div>
+                    <div className='subject'>{message.subject} {message.content}</div>
+                </div>
             ))
             }
-        </table>
+        </div>
     }
 
 

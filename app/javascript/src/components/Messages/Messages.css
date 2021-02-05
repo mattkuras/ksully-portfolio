@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@300&display=swap");
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -8,8 +11,42 @@
   font-family: "Rajdhani", sans-serif;
 }
 
-.admin-page-container {
+.messages-container {
   width: 100%;
+}
+
+.messages-header {
+  font-family: "Rajdhani", sans-serif;
+  text-align: left;
+  padding-left: 12.5%;
+  font-size: 4rem;
+}
+.message-table {
+  display: flex; 
+  flex-direction: column;
+}
+.message {
+  margin: auto;
+  display: flex;
+  border: #333 solid 1px;
+  height: 1.5rem;
+  width: 75%
+}
+
+
+.email {
+  text-align: left;
+  width: 20%;
+  font-weight: 700;
+  margin: 0 auto;
+  font-family: 'Roboto', sans-serif;
+}
+.subject {
+  text-align: left;
+  font-weight: 700;
+  width: 80%;
+  margin: 0 auto;
+  font-family: 'Roboto', sans-serif;
 }
 
 .header-links {
@@ -31,51 +68,15 @@
   color: #333;
 }
 
-.email {
-  border: #333 1px solid;
-}
-
-td {
-  margin: auto 25px;
-}
-
-.btn-container {
-  display: flex;
-  margin: 1rem;
-}
-
-.btn {
-  outline: none;
-  border: none;
-  padding: 10px 35px;
-  margin: 1rem;
-  border-radius: 2px;
-}
-
-.btn:hover {
-  cursor: pointer;
-  transform: scale(1.1);
-}
-
-.delete-btn {
-  background-color: #d11a2a;
-  color: #fff;
-}
-
-.btn-submit {
-  background-color: #963be3;
-  color: #fff;
-  border-radius: 2rem;
-}
 
 @media only screen and (max-width: 1250px) {
-  .product-container {
+  .message-container {
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
 
 @media only screen and (max-width: 900px) {
-  .product-container {
+  .message-container {
     grid-template-columns: 1fr 1fr;
     max-width: 90%;
   }
@@ -88,7 +89,7 @@ td {
 }
 
 @media only screen and (max-width: 600px) {
-  .product-container {
+  .message-container {
     grid-template-columns: 1fr;
     justify-content: center;
   }

@@ -25,6 +25,11 @@ const Contact = () => {
                 console.log(response)
             })
             .catch(error => console.log('api errors:', error))
+            setContent('')
+            setEmail('')
+            setFirstName('')
+            setLastName('')
+            setSubject('')
     };
 
     return (

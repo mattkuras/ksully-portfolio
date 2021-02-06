@@ -4,7 +4,7 @@ class Message < ApplicationRecord
     end
 
     def time_or_day
-        t = created_at
+        t = created_at.getlocal
         if t.today?
             h = t.hour
             m = t.min
@@ -21,7 +21,7 @@ class Message < ApplicationRecord
 
 
     def datetime
-        t = created_at
+        t = created_at.getlocal
         day = t.ctime.slice(0..9)
         if t.hour > 12
             h = t.hour

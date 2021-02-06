@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Footer from '../Footer/Footer.js'
 import Navbar from '../Navbar/Navbar.js'
 import './Contact.css'
@@ -14,18 +14,18 @@ const Contact = () => {
     const handleSubmit = (event) => {
         event.preventDefault()
         let message = {
-          email: email,
-          first_name: firstName,
-          last_name: lastName,
-          subject: subject,
-          content: content
+            email: email,
+            first_name: firstName,
+            last_name: lastName,
+            subject: subject,
+            content: content
         }
         axios.post('/messages', { message }, { withCredentials: true })
-          .then(response => {
-              console.log(response)
-          })
-          .catch(error => console.log('api errors:', error))
-      };
+            .then(response => {
+                console.log(response)
+            })
+            .catch(error => console.log('api errors:', error))
+    };
 
     return (
         <div className='contact-container'>
@@ -38,30 +38,23 @@ const Contact = () => {
                     I appreciate your patience, and look forward to connecting with you!</p>
                 </div>
             </div>
-            <Footer />
             <form className="contact-form" onSubmit={handleSubmit}>
+                <div className="input-container dub">
+                    <input className="input split" type="text" placeholder="First Name" id="first-name" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+                    <input className="input split" type="text" placeholder="Last Name" id="last-name" value={lastName} onChange={(e) => setLastName(e.target.value)} />
+                </div>
                 <div className="input-container">
-                    <label for="email">Email: </label>
                     <input className="input" type="text" placeholder="Enter Email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
                 </div>
                 <div className="input-container">
-                    <label for="first-name">First Name: </label>
-                    <input className="input" type="text" placeholder="First Name" id="first-name" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
-                </div>
-                <div className="input-container">
-                    <label for="last-name">Last Name: </label>
-                    <input className="input" type="text" placeholder="Last Name" id="last-name" value={lastName} onChange={(e) => setLastName(e.target.value)} />
-                </div>
-                <div className="input-container">
-                    <label for="subject">Subject: </label>
                     <input className="input" type="text" placeholder="Subject" id="subject" value={subject} onChange={(e) => setSubject(e.target.value)} />
                 </div>
                 <div className="input-container">
-                    <label for="content">Message: </label>
-                    <input className="input" type="text" placeholder="Type here" id="content" value={content} onChange={(e) => setContent(e.target.value)} />
+                    <textarea className="input"  placeholder="Type here" id="content" value={content} onChange={(e) => setContent(e.target.value)} />
                 </div>
-                <input type="submit" />
+                <input type="submit" className='submit' />
             </form>
+            <Footer />
         </div>
     );
 }

@@ -5,7 +5,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #4eadfa;
+  background: -webkit-linear-gradient(
+    rgba(29, 38, 113, 0.7),
+    rgba(195, 55, 100, 0.7)
+  );
   color: #fff;
   max-width: 100vw;
   font-family: "Rajdhani", sans-serif;
@@ -24,7 +27,7 @@
 .message-table {
   display: flex; 
   flex-direction: column;
-  margin-bottom: 150px;
+  margin-bottom: 100px;
 }
 .message {
   margin: auto;
@@ -35,8 +38,10 @@
   cursor: pointer;
 }
 .selected {
-  background: #ede7e6;
-  font-weight: 500;
+  background: -webkit-linear-gradient(
+      rgba(29, 38, 113, 0.7),
+      rgba(195, 55, 100, 0.7)
+    );
 }
 
 .email {
@@ -130,12 +135,6 @@
   }
 }
 
-@media only screen and (max-width: 900px) {
-  .message-container {
-    grid-template-columns: 1fr 1fr;
-    max-width: 90%;
-  }
-}
 
 @media only screen and (max-width: 700px) {
   .header h1 {
@@ -143,13 +142,6 @@
   }
 }
 
-@media only screen and (max-width: 600px) {
-  .message-container {
-    grid-template-columns: 1fr;
-    justify-content: center;
-  }
-
   .product-form {
     width: 80vw;
   }
-}

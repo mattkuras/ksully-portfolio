@@ -22,10 +22,6 @@ function App() {
     loginStatus()
   }, [])
 
-  const logged = () => {
-    isLoggedIn
-  }
-
   const loginStatus = async () => {
     await axios.get('/logged_in',
       { withCredentials: true })

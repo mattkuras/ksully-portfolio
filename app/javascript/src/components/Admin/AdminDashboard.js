@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
 import "./Admin.css"
+import Header from './Header'
 import { DirectUpload } from 'activestorage';
 
 const Admin = (props) => {
@@ -90,14 +90,7 @@ const Admin = (props) => {
 
   return (
     <div className="admin-page-container">
-      <div className="header">
-        <h2 className="header-item">Admin Dashboard</h2>
-        <div className="header-links">
-          <Link className="link header-item" to="/shop"><h1>Go To Shop</h1></Link>
-          <Link className="link header-item" to="/admin"><h1 onClick={props.handleLogout}>Logout</h1></Link>
-          <Link className="link header-item" to="/admin/messages"><h1>Messages</h1></Link>
-        </div>
-      </div>
+      <Header/>
       <form onSubmit={handleFormSubmit} className="product-form">
         <h1>Add New Photo Here</h1>
         <input onChange={e => setProductImage(e.target.files[0])} className="product-info" type="file" />

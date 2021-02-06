@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Footer from '../Footer/Footer.js'
 import { Link } from "react-router-dom"
 import './Messages.css'
-
+import Header from '../Admin/Header'
 
 const Messages = () => {
     const [messages, setMessages] = useState([]);
@@ -20,7 +20,7 @@ const Messages = () => {
             {messages.map((m) => (
                 <div key={m.id} id={m.id} onClick={handleClick} className= {'message ' + (message.id == m.id ? 'selected' : 'notselected')}>
                     <div className='email'>{m.email}</div>
-                    <div className='subject'>{m.subject} {m.content}</div>
+                    <div className='subject'>{m.subject.toUpperCase()} {m.content}</div>
                     <div className='datetime'>{m.time_or_day}</div>
                 </div>
             ))
@@ -48,14 +48,7 @@ const Messages = () => {
 
     return (
         <div className='messages-container'>
-            <div className="header">
-                <a href='/admindashboard'><h2 className="header-item">Admin Dashboard</h2></a>
-                <div className="header-links">
-                    <Link className="link header-item" to="/shop"><h1>Go To Shop</h1></Link>
-                    <Link className="link header-item" to="/admin"><h1 >Logout</h1></Link>
-                    <Link className="link header-item" to="/admin/messages"><h1>Messages</h1></Link>
-                </div>
-            </div>
+            <Header/>
             <div className='messages-content'>
                 <div className='messages'>
                     <h1 className='messages-header'>Messages</h1>

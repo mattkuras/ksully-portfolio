@@ -3,7 +3,7 @@ class MessagesController < ApplicationController
     
         def index
             messages = Message.all
-            render json: messages.to_json(methods: [:full_name])
+            render json: messages.reverse().to_json(methods: [:full_name, :time_or_day, :datetime])
         end
     
         def show

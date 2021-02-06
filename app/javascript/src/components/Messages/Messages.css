@@ -24,15 +24,20 @@
 .message-table {
   display: flex; 
   flex-direction: column;
+  margin-bottom: 150px;
 }
 .message {
   margin: auto;
   display: flex;
   border: #333 solid 1px;
   height: 1.5rem;
-  width: 75%
+  width: 75%;
+  cursor: pointer;
 }
-
+.selected {
+  background: #ede7e6;
+  font-weight: 500;
+}
 
 .email {
   text-align: left;
@@ -40,13 +45,63 @@
   font-weight: 700;
   margin: 0 auto;
   font-family: 'Roboto', sans-serif;
+  padding-left: 5px;
+
 }
 .subject {
   text-align: left;
   font-weight: 700;
-  width: 80%;
+  width: 70%;
   margin: 0 auto;
   font-family: 'Roboto', sans-serif;
+  overflow: hidden;
+}
+.datetime {
+  text-align: right;
+  width: 10%;
+  font-family: 'Roboto', sans-serif;
+  margin: 0 auto;
+}
+
+.show-message {
+  margin-left: 12.5%;
+  width: 60%;
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 100px;
+  border: #333 1px solid;
+  font-family: 'Roboto', sans-serif;
+
+}
+.show-message div {
+  width: 100%;
+  text-align: left;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+.message-subject {
+  height: 20%;
+  margin-bottom: 40px;
+  margin-top: 10px;
+  font-size: 1.6rem;
+  font-weight: 1000;
+}
+.message-time {
+  font-size: 1.3rem;
+}
+.message-sender {
+  height: 20%;
+  margin-bottom: 20px;
+  font-weight: 500;
+  font-size: 1.5rem;
+  text-decoration: underline;
+}
+
+.message-content {
+  height: 60%;
+  font-size: 1.5rem;
+  padding-bottom: 40px;
 }
 
 .header-links {

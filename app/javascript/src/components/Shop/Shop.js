@@ -9,6 +9,7 @@ import Backdrop from '../Backdrop/backdrop.js'
 import Dropdown from "../Dropdown/Dropdown.js"
 import Footer from "../Footer/Footer"
 import Navbar from '../Navbar/Navbar.js'
+import Masonry from "react-masonry-css"
 
 const stripePromise = loadStripe('pk_live_51IB1JNFNqePL7pa3xw2MueUlJf4hm7ROUVT9TcxBSZa1Bjw4P7fXISfvqFf3jNs5qi4oREGiN9hlA82RBqf4QXyj000Zd8UWD7')
 

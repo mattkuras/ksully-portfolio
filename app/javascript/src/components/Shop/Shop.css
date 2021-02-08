@@ -82,7 +82,7 @@ a:visited {
   grid-column: span 2;
 }
 .product-card:nth-child(7n+3),
-.product-card:nth-child(6n+4){
+.product-card:nth-child(7n+4){
   grid-column: span 3;
 }
 .product-card:nth-child(7n+5),

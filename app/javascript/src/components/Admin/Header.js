@@ -11,8 +11,8 @@ const Header = () => {
                 <a href='/admindashboard'><h2 className="header-item">Admin Dashboard</h2></a>
                 <div className="header-links">
                     <Link className="link header-item" to="/shop"><h1>Go To Shop</h1></Link>
-                    <Link className="link header-item" to="/admin"><h1 >Logout</h1></Link>
                     <Link className="link header-item" to="/admin/messages"><h1>Messages</h1></Link>
+                    <Link className="link header-item" to="/admin"><h1 >Logout</h1></Link>
                 </div>
             </div>
      );

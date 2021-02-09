@@ -91,10 +91,9 @@ a:visited {
   grid-column: span 2;
 }
 .product-card {
-  align-items: center;
-  margin: 0.25rem;
   position: relative;
-  height: 500px;
+  height: 100%;
+  width: 100%;
 }
 
 .product-card:hover:after {
@@ -111,6 +110,7 @@ a:visited {
 .product-card img {
   height: 100%;
   width: 100%;
+  margin: 50px;
   object-fit: cover;
   object-position: center center;
 }

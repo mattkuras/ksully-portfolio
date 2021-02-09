@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Footer from '../Footer/Footer.js'
-import { Link } from "react-router-dom"
 import './Messages.css'
 import Header from '../Admin/Header'
 

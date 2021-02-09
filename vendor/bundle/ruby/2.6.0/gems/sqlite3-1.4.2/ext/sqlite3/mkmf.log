@@ -1,0 +1,98 @@
+"pkg-config --exists sqlite3"
+| pkg-config --libs sqlite3
+=> "-lsqlite3\n"
+"gcc -o conftest -I/home/mattkuras/.rvm/rubies/ruby-2.6.6/include/ruby-2.6.0/x86_64-linux -I/home/mattkuras/.rvm/rubies/ruby-2.6.6/include/ruby-2.6.0/ruby/backward -I/home/mattkuras/.rvm/rubies/ruby-2.6.6/include/ruby-2.6.0 -I.    -O3 -ggdb3 -Wall -Wextra -Wdeclaration-after-statement -Wdeprecated-declarations -Wduplicated-cond -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wrestrict -Wwrite-strings -Wimplicit-fallthrough=0 -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable  -fPIC conftest.c  -L. -L/home/mattkuras/.rvm/rubies/ruby-2.6.6/lib -Wl,-rpath,/home/mattkuras/.rvm/rubies/ruby-2.6.6/lib -L. -fstack-protector-strong -rdynamic -Wl,-export-dynamic     -Wl,-rpath,'/../lib' -Wl,-rpath,'/../lib' -lruby  -lm   -lc"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main(int argc, char **argv)
+4: {
+5:   return 0;
+6: }
+/* end */
+
+"gcc -o conftest -I/home/mattkuras/.rvm/rubies/ruby-2.6.6/include/ruby-2.6.0/x86_64-linux -I/home/mattkuras/.rvm/rubies/ruby-2.6.6/include/ruby-2.6.0/ruby/backward -I/home/mattkuras/.rvm/rubies/ruby-2.6.6/include/ruby-2.6.0 -I.    -O3 -ggdb3 -Wall -Wextra -Wdeclaration-after-statement -Wdeprecated-declarations -Wduplicated-cond -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wrestrict -Wwrite-strings -Wimplicit-fallthrough=0 -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable  -fPIC conftest.c  -L. -L/home/mattkuras/.rvm/rubies/ruby-2.6.6/lib -Wl,-rpath,/home/mattkuras/.rvm/rubies/ruby-2.6.6/lib -L. -fstack-protector-strong -rdynamic -Wl,-export-dynamic     -Wl,-rpath,'/../lib' -Wl,-rpath,'/../lib' -lruby -lsqlite3 -lm   -lc"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main(int argc, char **argv)
+4: {
+5:   return 0;
+6: }
+/* end */
+
+| pkg-config --cflags-only-I sqlite3
+=> "\n"
+| pkg-config --cflags-only-other sqlite3
+=> "\n"
+| pkg-config --libs-only-l sqlite3
+=> "-lsqlite3\n"
+package configuration for sqlite3
+cflags: 
+ldflags: 
+libs: -lsqlite3
+
+find_header: checking for sqlite3.h... -------------------- yes
+
+"gcc -E -I/home/mattkuras/.rvm/rubies/ruby-2.6.6/include/ruby-2.6.0/x86_64-linux -I/home/mattkuras/.rvm/rubies/ruby-2.6.6/include/ruby-2.6.0/ruby/backward -I/home/mattkuras/.rvm/rubies/ruby-2.6.6/include/ruby-2.6.0 -I.     -O3 -ggdb3 -Wall -Wextra -Wdeclaration-after-statement -Wdeprecated-declarations -Wduplicated-cond -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wrestrict -Wwrite-strings -Wimplicit-fallthrough=0 -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable  -fPIC  -DTAINTING_SUPPORT  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <sqlite3.h>
+/* end */
+
+--------------------
+
+"gcc -o conftest -I/home/mattkuras/.rvm/rubies/ruby-2.6.6/include/ruby-2.6.0/x86_64-linux -I/home/mattkuras/.rvm/rubies/ruby-2.6.6/include/ruby-2.6.0/ruby/backward -I/home/mattkuras/.rvm/rubies/ruby-2.6.6/include/ruby-2.6.0 -I.     -O3 -ggdb3 -Wall -Wextra -Wdeclaration-after-statement -Wdeprecated-declarations -Wduplicated-cond -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wrestrict -Wwrite-strings -Wimplicit-fallthrough=0 -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable  -fPIC  -DTAINTING_SUPPORT conftest.c  -L. -L/home/mattkuras/.rvm/rubies/ruby-2.6.6/lib -Wl,-rpath,/home/mattkuras/.rvm/rubies/ruby-2.6.6/lib -L. -fstack-protector-strong -rdynamic -Wl,-export-dynamic      -lsqlite3 -Wl,-rpath,'/../lib' -Wl,-rpath,'/../lib' -lruby -lpthread  -lsqlite3 -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:14:57: error: ‘pthread_create’ undeclared (first use in this function); did you mean ‘rb_thread_create’?
+ int t(void) { void ((*volatile p)()); p = (void ((*)()))pthread_create; return !p; }
+                                                         ^~~~~~~~~~~~~~
+                                                         rb_thread_create
+conftest.c:14:57: note: each undeclared identifier is reported only once for each function it appears in
+conftest.c: At top level:
+cc1: warning: unrecognized command line option ‘-Wno-self-assign’
+cc1: warning: unrecognized command line option ‘-Wno-parentheses-equality’
+cc1: warning: unrecognized command line option ‘-Wno-constant-logical-operand’
+cc1: warning: unrecognized command line option ‘-Wno-cast-function-type’
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     int (* volatile tp)(void)=(int (*)(void))&t;
+ 9:     printf("%d", (*tp)());
+10:   }
+11: 
+12:   return 0;
+13: }
+14: int t(void) { void ((*volatile p)()); p = (void ((*)()))pthread_create; return !p; }
+/* end */
+
+"gcc -o conftest -I/home/mattkuras/.rvm/rubies/ruby-2.6.6/include/ruby-2.6.0/x86_64-linux -I/home/mattkuras/.rvm/rubies/ruby-2.6.6/include/ruby-2.6.0/ruby/backward -I/home/mattkuras/.rvm/rubies/ruby-2.6.6/include/ruby-2.6.0 -I.     -O3 -ggdb3 -Wall -Wextra -Wdeclaration-after-statement -Wdeprecated-declarations -Wduplicated-cond -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wrestrict -Wwrite-strings -Wimplicit-fallthrough=0 -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable  -fPIC  -DTAINTING_SUPPORT conftest.c  -L. -L/home/mattkuras/.rvm/rubies/ruby-2.6.6/lib -Wl,-rpath,/home/mattkuras/.rvm/rubies/ruby-2.6.6/lib -L. -fstack-protector-strong -rdynamic -Wl,-export-dynamic      -lsqlite3 -Wl,-rpath,'/../lib' -Wl,-rpath,'/../lib' -lruby -lpthread  -lsqlite3 -lm   -lc"
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     int (* volatile tp)(void)=(int (*)(void))&t;
+ 9:     printf("%d", (*tp)());
+10:   }
+11: 
+12:   return 0;
+13: }
+14: extern void pthread_create();
+15: int t(void) { pthread_create(); return 0; }
+/* end */
+

@@ -4,7 +4,7 @@ import './Messages.css'
 import Header from '../Admin/Header'
 import {BsTrash} from "react-icons/bs"
 
-const Messages = () => {
+const Messages = (props) => {
     const [messages, setMessages] = useState([]);
     const [messageShowOpen, setMessageShowOpen] = useState(false)
     const [message, setMessage] = useState({})
@@ -63,7 +63,7 @@ const Messages = () => {
 
     return (
         <div className='messages-container'>
-            <Header/>
+            <Header logout={props.handleLogout}/>
             <div className='messages-content'>
                 <div className='messages'>
                     <h1 className='messages-header'>Messages</h1>

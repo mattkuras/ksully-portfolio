@@ -90,7 +90,7 @@ const Admin = (props) => {
 
   return (
     <div className="admin-page-container">
-      <Header/>
+      <Header logout={props.handleLogout}/>
       <form onSubmit={handleFormSubmit} className="product-form">
         <h1>Add New Photo Here</h1>
         <input onChange={e => setProductImage(e.target.files[0])} className="product-info" type="file" />

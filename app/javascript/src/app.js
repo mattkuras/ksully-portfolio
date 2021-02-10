@@ -38,6 +38,7 @@ function App() {
   }
   const handleLogout = () => {
     setIsLoggedIn(false)
+    console.log('clicked')
   }
 
   return (
@@ -48,7 +49,12 @@ function App() {
       <Route exact path="/shop" component={Shop} />
       <Route exact path="/faq" component={Faq}/>
       <Route exact path="/contact" component={Contact}/>
-      <Route exact path="/admin/messages" component={Messages}/>
+      <Route exact path='/admin/messages'
+        render={props => (
+          <Messages {...props} handleLogout={handleLogout} loggedInStatus={isLoggedIn} />
+        )}>
+        {isLoggedIn ? null : <Redirect to="/admin" />}
+      </Route>
       <Route exact path='/admindashboard'
         render={props => (
           <AdminDashboard {...props} handleLogin={handleLogin} handleLogout={handleLogout} loggedInStatus={isLoggedIn} />

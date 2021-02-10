@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   post 'charges', to: 'charges#create'
 
+  delete 'messages/:id', to: 'messages#destroy'
   post 'messages', to: 'messages#create'
   get 'messages', to: 'messages#index'
 

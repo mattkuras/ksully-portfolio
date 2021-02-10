@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Footer from '../Footer/Footer.js'
+import Axios from 'axios'
 import './Messages.css'
 import Header from '../Admin/Header'
 import {BsTrash} from "react-icons/bs"
@@ -19,7 +19,7 @@ const Messages = () => {
         return <div className='message-table'>
             {messages.map((m) => (
                 <div key={m.id} id={m.id} onClick={handleClick} className= {'message ' + (message.id == m.id ? 'selected' : 'notselected')}>
-                    <BsTrash className="trash-icon" />
+                    <BsTrash className="trash-icon" onClick={deleteMessage} />
                     <div className='email'>{m.email}</div>
                     <div className='subject'>{m.subject.toUpperCase()}</div>
                     <div className='content-words'>{m.content}</div>
@@ -36,6 +36,19 @@ const Messages = () => {
         let { subject, email, content, full_name, time_or_day, id, datetime } = showMessage[0]
         setMessage({ subject, email, content, full_name, time_or_day, id, datetime })
         setMessageShowOpen(true)
+    }
+    const deleteMessage = (e) => {
+        let id = e.target.parentNode.id
+        Axios.delete(`/messages/${id}`)
+        .then(resp => {
+            if (resp.status == 200 ){
+                let remainingMessages = messages.filter(m => id != m.id)
+                setMessages(remainingMessages)
+            }
+            else {
+                console.log(resp)
+            }
+        })
     }
 
     const DisplayMessage = () => {

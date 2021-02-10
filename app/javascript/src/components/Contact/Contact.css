@@ -70,13 +70,3 @@
   margin: 10px auto;
 }
 
-@media only screen and (max-width: 1130px) {
-  .faqs {
-    width: 85%;
-  }
-}
-@media only screen and (max-width: 650px) {
-  .faqs {
-    width: 95%;
-  }
-}

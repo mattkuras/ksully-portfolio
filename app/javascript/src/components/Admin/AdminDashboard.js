@@ -38,7 +38,7 @@ const Admin = (props) => {
           </div>
           <h1>{product.name}</h1>
           <div className="btn-container">
-            <button value={product.id} onClick={handleDelete} className="btn delete-btn">Delete</button>
+            <button value={product.id} onClick={handleDelete} className="dbtn delete-btn">Delete</button>
           </div>
         </div>
       ))}

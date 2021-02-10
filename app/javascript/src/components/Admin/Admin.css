@@ -67,7 +67,7 @@
   margin: 0.5rem;
   box-shadow: -11px 11px 1px rgba(0, 0, 0, 0.3);
   font-family: "Rajdhani", sans-serif;
-  height: 700px;
+  height: 500px;
 }
 
 .img-container {
@@ -83,6 +83,7 @@
   display: flex;
   margin: 1rem;
 }
+
 
 .btn {
   outline: none;

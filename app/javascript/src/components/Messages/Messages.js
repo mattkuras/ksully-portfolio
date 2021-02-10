@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Footer from '../Footer/Footer.js'
 import './Messages.css'
 import Header from '../Admin/Header'
+import {BsTrash} from "react-icons/bs"
 
 const Messages = () => {
     const [messages, setMessages] = useState([]);
@@ -18,8 +19,10 @@ const Messages = () => {
         return <div className='message-table'>
             {messages.map((m) => (
                 <div key={m.id} id={m.id} onClick={handleClick} className= {'message ' + (message.id == m.id ? 'selected' : 'notselected')}>
+                    <BsTrash className="trash-icon" />
                     <div className='email'>{m.email}</div>
-                    <div className='subject'>{m.subject.toUpperCase()} {m.content}</div>
+                    <div className='subject'>{m.subject.toUpperCase()}</div>
+                    <div className='content-words'>{m.content}</div>
                     <div className='datetime'>{m.time_or_day}</div>
                 </div>
             ))
@@ -55,7 +58,6 @@ const Messages = () => {
                 </div>
             </div>
             {messageShowOpen && message != undefined ? <DisplayMessage /> : null}
-            <Footer />
         </div>
     );
 }

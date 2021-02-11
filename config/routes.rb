@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'faqs/index'
+  get 'faqs/create'
+  get 'faqs/update'
+  get 'faqs/delete'
   root 'home#index'
 
   post 'charges', to: 'charges#create'
@@ -15,6 +19,8 @@ Rails.application.routes.draw do
   delete 'products/:id', to: 'products#destroy'
 
   post '/rails/active_storage/direct_uploads', to: 'direct_uploads#create'
+
+  resource :faqs, only: [:index, :update, :delete, :create]
 
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'

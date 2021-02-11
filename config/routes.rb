@@ -20,7 +20,10 @@ Rails.application.routes.draw do
 
   post '/rails/active_storage/direct_uploads', to: 'direct_uploads#create'
 
-  resource :faqs, only: [:index, :update, :delete, :create]
+  post 'faqs', to: 'faqs#create'
+  get 'faqs', to: 'faqs#index'
+  patch 'faqs/:id', to: 'faqs#update'
+  delete 'faqs/:id', to: 'faqs#destroy'
 
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'

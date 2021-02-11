@@ -5,7 +5,7 @@ import './Faq.css'
 import Axios from 'axios'
 
 
-const Faq = () => {
+const Faqs = () => {
     const [faqs, setFaqs] = useState([])
 
     useEffect(() => {
@@ -38,4 +38,4 @@ const Faq = () => {
     );
 }
 
-export default Faq;
+export default Faqs;

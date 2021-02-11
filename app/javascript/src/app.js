@@ -10,6 +10,7 @@ import Faq from './components/Faq/Faq.js'
 import Contact from './components/Contact/Contact.js'
 import Messages from './components/Messages/Messages.js'
 import Admin from "./components/Admin/Admin"
+import Faqs from './components/Admin/Faqs'
 import axios from 'axios'
 
 
@@ -49,6 +50,7 @@ function App() {
       <Route exact path="/shop" component={Shop} />
       <Route exact path="/faq" component={Faq}/>
       <Route exact path="/contact" component={Contact}/>
+      <Route exact path="/admin/faqs" component={Faqs}/>
       <Route exact path='/admin/messages'
         render={props => (
           <Messages {...props} handleLogout={handleLogout} loggedInStatus={isLoggedIn} />

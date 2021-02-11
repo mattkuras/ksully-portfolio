@@ -15,7 +15,12 @@ class FaqsController < ApplicationController
 
   def update
     faq = Faq.find_by(id: params[:id])
-    render json: faq 
+    faq.update(faq_params)
+    if faq.save
+      render json: faq
+    else
+      render json: 'there was an error saving changes to the faq'
+    end 
   end
 
   def delete
@@ -30,7 +35,7 @@ class FaqsController < ApplicationController
   private
 
   def faq_params 
-    params.require(:faq).permit(:question, :answer)
+    params.require(:faq).permit(:question, :answer, :id)
   end
 
 end

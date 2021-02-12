@@ -30,7 +30,7 @@ function Shop() {
 
   useEffect((e) => {
     if (showProductSize === "small") {
-      setProductPrice(1)
+      setProductPrice(35)
     } else if (showProductSize === "large") {
       setProductPrice(50)
     } else {
@@ -39,7 +39,7 @@ function Shop() {
   }, [showProductSize])
 
   useEffect((e) => {
-    if (productPrice === 1) {
+    if (productPrice === 35) {
       let smallPrint = document.getElementById("small")
       let largePrint = document.getElementById("large")
       smallPrint.classList.add("selected")

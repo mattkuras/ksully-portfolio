@@ -10,6 +10,7 @@ const Contact = () => {
     const [lastName, setLastName] = useState('')
     const [subject, setSubject] = useState('')
     const [content, setContent] = useState('')
+    const [messageSent, setMessageSent] = useState(false)
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -23,6 +24,10 @@ const Contact = () => {
         axios.post('/messages', { message }, { withCredentials: true })
             .then(response => {
                 console.log(response)
+                if (response.statusText == "OK"){
+                    setMessageSent(true)
+                }
+                else {console.log('errrrorrrrr') }
             })
             .catch(error => console.log('api errors:', error))
             setContent('')
@@ -32,15 +37,22 @@ const Contact = () => {
             setSubject('')
     };
 
+    let ok
+    const renderOk = () => {
+        return(
+        <div className='message-sent'>
+           <p> Your message was sent!</p>
+        </div>
+    )}
+
     return (
         <div className='contact-container'>
             <div className='contact-content'>
                 <Navbar />
                 <div className='contacts'>
                     <h1 className='contact-header'>Get in touch</h1>
-                    <p className='contact-message'>For questions about our products, services, or whether you would like to
-                    collaborate or simply connect, please contact me at kylesullivan738@gmail.com, or complete the form below.
-                    I appreciate your patience, and look forward to connecting with you!</p>
+                    <p className='contact-message'>For any inquiries, questions, comments, or concerns please contact me at kylesullivan738@gmail.com<br/>
+                    Or feel free to drop a message below</p>
                 </div>
             </div>
             <form className="contact-form" onSubmit={handleSubmit}>
@@ -58,7 +70,9 @@ const Contact = () => {
                     <textarea className="input"  placeholder="Type here" id="content" value={content} onChange={(e) => setContent(e.target.value)} />
                 </div>
                 <input type="submit" className='submit' />
+                {messageSent ? renderOk() : null}
             </form>
+            
             <Footer />
         </div>
     );

@@ -69,4 +69,19 @@
   height: 1.5rem;
   margin: 10px auto;
 }
+@media only screen and (max-width:500px) {
+  .submit {
+    width: 30%;
+  }
+ 
+}
 
+.message-sent {
+  margin: 10px auto 0;
+  padding: 10px 25px;
+  background: #97e6b1;
+  font-family: "Nanum Gothic", sans-serif;
+}
+.message-sent p {
+  color: black;
+}
